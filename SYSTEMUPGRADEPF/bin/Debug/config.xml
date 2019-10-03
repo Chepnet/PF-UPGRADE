@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ServerName>user-pc</ServerName>
+  <DbName>PFUPGRADE</DbName>
+  <UserName>sa</UserName>
+  <Password>pass123</Password>
+  <SMSUserName>AVENTURO</SMSUserName>
+  <SMSSenderId>AVENTURO</SMSSenderId>
+  <SMSPassword>yukqEvz95sc=</SMSPassword>
+</Configuration>

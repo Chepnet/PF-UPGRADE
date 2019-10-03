@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{1B0C4797-E9F0-4FD0-AFBC-3E9C4F65A5D3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SYSTEMUPGRADEPF</RootNamespace>
+    <AssemblyName>SYSTEMUPGRADEPF</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="nsoftware.IPWorks">
+      <HintPath>..\..\..\..\..\AppData\Local\Microsoft\VisualStudio\14.0\Extensions\324wfmol.wgw\nsoftware.IPWorks.dll</HintPath>
+    </Reference>
+    <Reference Include="ObjectListView">
+      <HintPath>E:\micropoint stuff\pf downloads\ObjectListView.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\AssetSubCategory.cs" />
+    <Compile Include="frmAssetCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAssetCategory.Designer.cs">
+      <DependentUpon>frmAssetCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\ACTransactions.cs" />
+    <Compile Include="Classes\AssetCategory.cs" />
+    <Compile Include="Classes\AssetRegister.cs" />
+    <Compile Include="Classes\AssetTransaction.cs" />
+    <Compile Include="Classes\Bank.cs" />
+    <Compile Include="Classes\Ben.cs" />
+    <Compile Include="Classes\Caption.cs" />
+    <Compile Include="Classes\CashWithdrawals.cs" />
+    <Compile Include="Classes\ChartOfAccount.cs" />
+    <Compile Include="Classes\ClientClassification.cs" />
+    <Compile Include="Classes\Collateral.cs" />
+    <Compile Include="Classes\CompulsoryField.cs" />
+    <Compile Include="Classes\Currency.cs" />
+    <Compile Include="Classes\Customer.cs" />
+    <Compile Include="Classes\DocumentType.cs" />
+    <Compile Include="Classes\Employer.cs" />
+    <Compile Include="Classes\ExchangeRate.cs" />
+    <Compile Include="Classes\FixedDeposit.cs" />
+    <Compile Include="Classes\FixedDepositPayment.cs" />
+    <Compile Include="Classes\GroupedOption.cs" />
+    <Compile Include="Classes\Invoice.cs" />
+    <Compile Include="Classes\Item.cs" />
+    <Compile Include="Classes\ItemData.cs" />
+    <Compile Include="Classes\Kin.cs" />
+    <Compile Include="Classes\KinDocument.cs" />
+    <Compile Include="Classes\Link.cs" />
+    <Compile Include="Classes\Loan.cs" />
+    <Compile Include="Classes\LoanApplication.cs" />
+    <Compile Include="Classes\LoanApplicationCollateral.cs" />
+    <Compile Include="Classes\LoanCategory.cs" />
+    <Compile Include="Classes\LoanCollateralImage.cs" />
+    <Compile Include="Classes\LoanGuarantor.cs" />
+    <Compile Include="Classes\LoanPurpose.cs" />
+    <Compile Include="Classes\LoanType.cs" />
+    <Compile Include="Classes\LoanTypeCollateral.cs" />
+    <Compile Include="Classes\Member.cs" />
+    <Compile Include="Classes\MemberApplication.cs" />
+    <Compile Include="Classes\MemberApplicationDocument.cs" />
+    <Compile Include="Classes\MemberDocument.cs" />
+    <Compile Include="Classes\MemberKin.cs" />
+    <Compile Include="Classes\MemberShare.cs" />
+    <Compile Include="Classes\ModeOfPayment.cs" />
+    <Compile Include="Classes\OtherCharge.cs" />
+    <Compile Include="Classes\Payment.cs" />
+    <Compile Include="Classes\Prefix.cs" />
+    <Compile Include="Classes\Product.cs" />
+    <Compile Include="Classes\Relationship.cs" />
+    <Compile Include="Classes\RepaymentPeriod.cs" />
+    <Compile Include="Classes\Serial.cs" />
+    <Compile Include="Classes\Journal.cs" />
+    <Compile Include="Classes\SetupRule.cs" />
+    <Compile Include="Classes\ShareTypeCharge.cs" />
+    <Compile Include="Classes\ShareType.cs" />
+    <Compile Include="Classes\Station.cs" />
+    <Compile Include="frmACTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmACTransaction.Designer.cs">
+      <DependentUpon>frmACTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssetRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAssetRegistration.Designer.cs">
+      <DependentUpon>frmAssetRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssetSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAssetSubCategory.Designer.cs">
+      <DependentUpon>frmAssetSubCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAssetTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAssetTransaction.Designer.cs">
+      <DependentUpon>frmAssetTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBank.Designer.cs">
+      <DependentUpon>frmBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBen.designer.cs">
+      <DependentUpon>frmBen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCaption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCaption.Designer.cs">
+      <DependentUpon>frmCaption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCashWithdrawal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCashWithdrawal.Designer.cs">
+      <DependentUpon>frmCashWithdrawal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChartsOfAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChartsOfAccounts.designer.cs">
+      <DependentUpon>frmChartsOfAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmClientClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClientClassification.Designer.cs">
+      <DependentUpon>frmClientClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCollaterals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCollaterals.designer.cs">
+      <DependentUpon>frmCollaterals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCompulsoryField.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCompulsoryField.Designer.cs">
+      <DependentUpon>frmCompulsoryField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmConnectivityStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmConnectivityStatus.Designer.cs">
+      <DependentUpon>frmConnectivityStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCurrency.Designer.cs">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCustomers.Designer.cs">
+      <DependentUpon>frmCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDocumentType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDocumentType.Designer.cs">
+      <DependentUpon>frmDocumentType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmEmployer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEmployer.Designer.cs">
+      <DependentUpon>frmEmployer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmExchangeRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExchangeRate.Designer.cs">
+      <DependentUpon>frmExchangeRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmFixedDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFixedDeposit.Designer.cs">
+      <DependentUpon>frmFixedDeposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmGroupedOption.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGroupedOption.Designer.cs">
+      <DependentUpon>frmGroupedOption.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInvoice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInvoice.Designer.cs">
+      <DependentUpon>frmInvoice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmItem.Designer.cs">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJournal.Designer.cs">
+      <DependentUpon>frmJournal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKin.designer.cs">
+      <DependentUpon>frmKin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKinDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKinDocument.designer.cs">
+      <DependentUpon>frmKinDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoanApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoanApplication.designer.cs">
+      <DependentUpon>frmLoanApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoanApplicationCollateralImages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoanApplicationCollateralImages.Designer.cs">
+      <DependentUpon>frmLoanApplicationCollateralImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoanCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoanCategory.Designer.cs">
+      <DependentUpon>frmLoanCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoanDisbursement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoanDisbursement.Designer.cs">
+      <DependentUpon>frmLoanDisbursement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoanPurpose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoanPurpose.designer.cs">
+      <DependentUpon>frmLoanPurpose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoanRepayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoanRepayment.Designer.cs">
+      <DependentUpon>frmLoanRepayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmloanreport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmloanreport.Designer.cs">
+      <DependentUpon>frmloanreport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLoanTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLoanTypes.designer.cs">
+      <DependentUpon>frmLoanTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMember.designer.cs">
+      <DependentUpon>frmMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemberApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberApplication.Designer.cs">
+      <DependentUpon>frmMemberApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemberApplicationDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberApplicationDocument.Designer.cs">
+      <DependentUpon>frmMemberApplicationDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemberDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberDocument.designer.cs">
+      <DependentUpon>frmMemberDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMemberShares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMemberShares.designer.cs">
+      <DependentUpon>frmMemberShares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMembersReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMembersReport.Designer.cs">
+      <DependentUpon>frmMembersReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmModeOfPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmModeOfPayment.Designer.cs">
+      <DependentUpon>frmModeOfPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOtherCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOtherCharge.Designer.cs">
+      <DependentUpon>frmOtherCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPayment.Designer.cs">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPrefix.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPrefix.Designer.cs">
+      <DependentUpon>frmPrefix.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmProduct.Designer.cs">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelationship.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelationship.designer.cs">
+      <DependentUpon>frmRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRepaymentPeriods.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRepaymentPeriods.designer.cs">
+      <DependentUpon>frmRepaymentPeriods.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchACTrasaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchACTrasaction.Designer.cs">
+      <DependentUpon>frmSearchACTrasaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchAssetCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchAssetCategory.Designer.cs">
+      <DependentUpon>frmSearchAssetCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchAssetRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchAssetRegister.Designer.cs">
+      <DependentUpon>frmSearchAssetRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchAssetSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchAssetSubCategory.Designer.cs">
+      <DependentUpon>frmSearchAssetSubCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchAssetTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchAssetTransaction.Designer.cs">
+      <DependentUpon>frmSearchAssetTransaction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchBank.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchBank.Designer.cs">
+      <DependentUpon>frmSearchBank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchBen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchBen.designer.cs">
+      <DependentUpon>frmSearchBen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchCashWithdrawals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchCashWithdrawals.Designer.cs">
+      <DependentUpon>frmSearchCashWithdrawals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchChartOfAccounts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchChartOfAccounts.designer.cs">
+      <DependentUpon>frmSearchChartOfAccounts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchClientClassification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchClientClassification.Designer.cs">
+      <DependentUpon>frmSearchClientClassification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchCollaterals.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchCollaterals.designer.cs">
+      <DependentUpon>frmSearchCollaterals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchCurrency.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchCurrency.Designer.cs">
+      <DependentUpon>frmSearchCurrency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchCustomers.Designer.cs">
+      <DependentUpon>frmSearchCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchDocumentType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchDocumentType.Designer.cs">
+      <DependentUpon>frmSearchDocumentType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchEmployer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchEmployer.Designer.cs">
+      <DependentUpon>frmSearchEmployer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchExchangeRates.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchExchangeRates.Designer.cs">
+      <DependentUpon>frmSearchExchangeRates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchFixedDeposit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchFixedDeposit.Designer.cs">
+      <DependentUpon>frmSearchFixedDeposit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchInvoices.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchInvoices.Designer.cs">
+      <DependentUpon>frmSearchInvoices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchItems.Designer.cs">
+      <DependentUpon>frmSearchItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchKin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchKin.designer.cs">
+      <DependentUpon>frmSearchKin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchKinDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchKinDocument.designer.cs">
+      <DependentUpon>frmSearchKinDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmsearchLoanApplications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmsearchLoanApplications.designer.cs">
+      <DependentUpon>frmsearchLoanApplications.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchLoanCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchLoanCategory.Designer.cs">
+      <DependentUpon>frmSearchLoanCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchLoanCollateralImages.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchLoanCollateralImages.designer.cs">
+      <DependentUpon>frmSearchLoanCollateralImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchLoanPurpose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchLoanPurpose.designer.cs">
+      <DependentUpon>frmSearchLoanPurpose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchLoans.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchLoans.Designer.cs">
+      <DependentUpon>frmSearchLoans.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchLoanTypeCollateral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchLoanTypeCollateral.Designer.cs">
+      <DependentUpon>frmSearchLoanTypeCollateral.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchLoanTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchLoanTypes.designer.cs">
+      <DependentUpon>frmSearchLoanTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchMember.designer.cs">
+      <DependentUpon>frmSearchMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchMemberApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchMemberApplication.Designer.cs">
+      <DependentUpon>frmSearchMemberApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchMemberApplicationDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchMemberApplicationDocument.Designer.cs">
+      <DependentUpon>frmSearchMemberApplicationDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchMemberDocument.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchMemberDocument.designer.cs">
+      <DependentUpon>frmSearchMemberDocument.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchMemberShares.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchMemberShares.designer.cs">
+      <DependentUpon>frmSearchMemberShares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchModeOfPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchModeOfPayment.Designer.cs">
+      <DependentUpon>frmSearchModeOfPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchOtherCharges.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchOtherCharges.Designer.cs">
+      <DependentUpon>frmSearchOtherCharges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchPayment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchPayment.Designer.cs">
+      <DependentUpon>frmSearchPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchProduct.Designer.cs">
+      <DependentUpon>frmSearchProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchRelationship.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchRelationship.Designer.cs">
+      <DependentUpon>frmSearchRelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchRepaymentPeriod.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchRepaymentPeriod.designer.cs">
+      <DependentUpon>frmSearchRepaymentPeriod.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchSetupRule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchSetupRule.Designer.cs">
+      <DependentUpon>frmSearchSetupRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchShareTypeCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchShareTypeCharge.Designer.cs">
+      <DependentUpon>frmSearchShareTypeCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchShareTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchShareTypes.designer.cs">
+      <DependentUpon>frmSearchShareTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSearchStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSearchStation.Designer.cs">
+      <DependentUpon>frmSearchStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSetupRule.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSetupRule.Designer.cs">
+      <DependentUpon>frmSetupRule.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShareTypeCharge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShareTypeCharge.Designer.cs">
+      <DependentUpon>frmShareTypeCharge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShareType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShareType.designer.cs">
+      <DependentUpon>frmShareType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStation.Designer.cs">
+      <DependentUpon>frmStation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTransferFunds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTransferFunds.Designer.cs">
+      <DependentUpon>frmTransferFunds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalVariable.cs" />
+    <Compile Include="Classes\LoanApplicationCharge.cs" />
+    <Compile Include="Classes\LoanTransaction.cs" />
+    <Compile Include="MDIUpgrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MDIUpgrade.Designer.cs">
+      <DependentUpon>MDIUpgrade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\loanreports.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>loanreports.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\MembersCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MembersCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <EmbeddedResource Include="frmACTransaction.resx">
+      <DependentUpon>frmACTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAssetCategory.resx">
+      <DependentUpon>frmAssetCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAssetRegistration.resx">
+      <DependentUpon>frmAssetRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAssetSubCategory.resx">
+      <DependentUpon>frmAssetSubCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAssetTransaction.resx">
+      <DependentUpon>frmAssetTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBank.resx">
+      <DependentUpon>frmBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBen.resx">
+      <DependentUpon>frmBen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCaption.resx">
+      <DependentUpon>frmCaption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCashWithdrawal.resx">
+      <DependentUpon>frmCashWithdrawal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChartsOfAccounts.resx">
+      <DependentUpon>frmChartsOfAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmClientClassification.resx">
+      <DependentUpon>frmClientClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCollaterals.resx">
+      <DependentUpon>frmCollaterals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCompulsoryField.resx">
+      <DependentUpon>frmCompulsoryField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmConnectivityStatus.resx">
+      <DependentUpon>frmConnectivityStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCurrency.resx">
+      <DependentUpon>frmCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCustomers.resx">
+      <DependentUpon>frmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDocumentType.resx">
+      <DependentUpon>frmDocumentType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmEmployer.resx">
+      <DependentUpon>frmEmployer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmExchangeRate.resx">
+      <DependentUpon>frmExchangeRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmFixedDeposit.resx">
+      <DependentUpon>frmFixedDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGroupedOption.resx">
+      <DependentUpon>frmGroupedOption.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInvoice.resx">
+      <DependentUpon>frmInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmItem.resx">
+      <DependentUpon>frmItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJournal.resx">
+      <DependentUpon>frmJournal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKin.resx">
+      <DependentUpon>frmKin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKinDocument.resx">
+      <DependentUpon>frmKinDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoanApplication.resx">
+      <DependentUpon>frmLoanApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoanApplicationCollateralImages.resx">
+      <DependentUpon>frmLoanApplicationCollateralImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoanCategory.resx">
+      <DependentUpon>frmLoanCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoanDisbursement.resx">
+      <DependentUpon>frmLoanDisbursement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoanPurpose.resx">
+      <DependentUpon>frmLoanPurpose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoanRepayment.resx">
+      <DependentUpon>frmLoanRepayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmloanreport.resx">
+      <DependentUpon>frmloanreport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLoanTypes.resx">
+      <DependentUpon>frmLoanTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMember.resx">
+      <DependentUpon>frmMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberApplication.resx">
+      <DependentUpon>frmMemberApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberApplicationDocument.resx">
+      <DependentUpon>frmMemberApplicationDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberDocument.resx">
+      <DependentUpon>frmMemberDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMemberShares.resx">
+      <DependentUpon>frmMemberShares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMembersReport.resx">
+      <DependentUpon>frmMembersReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmModeOfPayment.resx">
+      <DependentUpon>frmModeOfPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOtherCharge.resx">
+      <DependentUpon>frmOtherCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPayment.resx">
+      <DependentUpon>frmPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPrefix.resx">
+      <DependentUpon>frmPrefix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmProduct.resx">
+      <DependentUpon>frmProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelationship.resx">
+      <DependentUpon>frmRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRepaymentPeriods.resx">
+      <DependentUpon>frmRepaymentPeriods.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchACTrasaction.resx">
+      <DependentUpon>frmSearchACTrasaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchAssetCategory.resx">
+      <DependentUpon>frmSearchAssetCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchAssetRegister.resx">
+      <DependentUpon>frmSearchAssetRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchAssetSubCategory.resx">
+      <DependentUpon>frmSearchAssetSubCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchAssetTransaction.resx">
+      <DependentUpon>frmSearchAssetTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchBank.resx">
+      <DependentUpon>frmSearchBank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchBen.resx">
+      <DependentUpon>frmSearchBen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchCashWithdrawals.resx">
+      <DependentUpon>frmSearchCashWithdrawals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchChartOfAccounts.resx">
+      <DependentUpon>frmSearchChartOfAccounts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchClientClassification.resx">
+      <DependentUpon>frmSearchClientClassification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchCollaterals.resx">
+      <DependentUpon>frmSearchCollaterals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchCurrency.resx">
+      <DependentUpon>frmSearchCurrency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchCustomers.resx">
+      <DependentUpon>frmSearchCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchDocumentType.resx">
+      <DependentUpon>frmSearchDocumentType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchEmployer.resx">
+      <DependentUpon>frmSearchEmployer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchExchangeRates.resx">
+      <DependentUpon>frmSearchExchangeRates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchFixedDeposit.resx">
+      <DependentUpon>frmSearchFixedDeposit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchInvoices.resx">
+      <DependentUpon>frmSearchInvoices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchItems.resx">
+      <DependentUpon>frmSearchItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchKin.resx">
+      <DependentUpon>frmSearchKin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchKinDocument.resx">
+      <DependentUpon>frmSearchKinDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmsearchLoanApplications.resx">
+      <DependentUpon>frmsearchLoanApplications.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchLoanCategory.resx">
+      <DependentUpon>frmSearchLoanCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchLoanCollateralImages.resx">
+      <DependentUpon>frmSearchLoanCollateralImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchLoanPurpose.resx">
+      <DependentUpon>frmSearchLoanPurpose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchLoans.resx">
+      <DependentUpon>frmSearchLoans.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchLoanTypeCollateral.resx">
+      <DependentUpon>frmSearchLoanTypeCollateral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchLoanTypes.resx">
+      <DependentUpon>frmSearchLoanTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchMember.resx">
+      <DependentUpon>frmSearchMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchMemberApplication.resx">
+      <DependentUpon>frmSearchMemberApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchMemberApplicationDocument.resx">
+      <DependentUpon>frmSearchMemberApplicationDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchMemberDocument.resx">
+      <DependentUpon>frmSearchMemberDocument.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchMemberShares.resx">
+      <DependentUpon>frmSearchMemberShares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchModeOfPayment.resx">
+      <DependentUpon>frmSearchModeOfPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchOtherCharges.resx">
+      <DependentUpon>frmSearchOtherCharges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchPayment.resx">
+      <DependentUpon>frmSearchPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchProduct.resx">
+      <DependentUpon>frmSearchProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchRelationship.resx">
+      <DependentUpon>frmSearchRelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchRepaymentPeriod.resx">
+      <DependentUpon>frmSearchRepaymentPeriod.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchSetupRule.resx">
+      <DependentUpon>frmSearchSetupRule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchShareTypeCharge.resx">
+      <DependentUpon>frmSearchShareTypeCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchShareTypes.resx">
+      <DependentUpon>frmSearchShareTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSearchStation.resx">
+      <DependentUpon>frmSearchStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSetupRule.resx">
+      <DependentUpon>frmSetupRule.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShareTypeCharge.resx">
+      <DependentUpon>frmShareTypeCharge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShareType.resx">
+      <DependentUpon>frmShareType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStation.resx">
+      <DependentUpon>frmStation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTransferFunds.resx">
+      <DependentUpon>frmTransferFunds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MDIUpgrade.resx">
+      <DependentUpon>MDIUpgrade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\loanreports.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>loanreports.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\MembersCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MembersCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete_16x.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
