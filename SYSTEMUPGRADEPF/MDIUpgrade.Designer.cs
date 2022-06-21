@@ -95,6 +95,8 @@
             this.fixedAssetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixedAssetsRegistrationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fixedAssetTransactionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assetCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.assetSubCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.transactionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.journalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -107,6 +109,7 @@
             this.loanRepaymentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.calculatorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.memeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -144,8 +147,8 @@
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.assetCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.assetSubCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.processToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.startEndOfDayToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -165,7 +168,8 @@
             this.windowsMenu,
             this.helpMenu,
             this.multiCurrencyToolStripMenuItem,
-            this.customersToolStripMenuItem});
+            this.customersToolStripMenuItem,
+            this.processToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.MdiWindowListItem = this.windowsMenu;
             this.menuStrip.Name = "menuStrip";
@@ -689,6 +693,20 @@
             this.fixedAssetTransactionToolStripMenuItem.Text = "Fixed Asset Transaction";
             this.fixedAssetTransactionToolStripMenuItem.Click += new System.EventHandler(this.fixedAssetTransactionToolStripMenuItem_Click);
             // 
+            // assetCategoryToolStripMenuItem
+            // 
+            this.assetCategoryToolStripMenuItem.Name = "assetCategoryToolStripMenuItem";
+            this.assetCategoryToolStripMenuItem.Size = new System.Drawing.Size(293, 30);
+            this.assetCategoryToolStripMenuItem.Text = "Asset Category";
+            this.assetCategoryToolStripMenuItem.Click += new System.EventHandler(this.assetCategoryToolStripMenuItem_Click);
+            // 
+            // assetSubCategoryToolStripMenuItem
+            // 
+            this.assetSubCategoryToolStripMenuItem.Name = "assetSubCategoryToolStripMenuItem";
+            this.assetSubCategoryToolStripMenuItem.Size = new System.Drawing.Size(293, 30);
+            this.assetSubCategoryToolStripMenuItem.Text = "Asset Sub Category";
+            this.assetSubCategoryToolStripMenuItem.Click += new System.EventHandler(this.assetSubCategoryToolStripMenuItem_Click);
+            // 
             // transactionsToolStripMenuItem
             // 
             this.transactionsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -771,7 +789,8 @@
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.optionsToolStripMenuItem});
+            this.optionsToolStripMenuItem,
+            this.calculatorToolStripMenuItem});
             this.toolsMenu.Name = "toolsMenu";
             this.toolsMenu.Size = new System.Drawing.Size(67, 29);
             this.toolsMenu.Text = "&Tools";
@@ -780,8 +799,16 @@
             // optionsToolStripMenuItem
             // 
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(160, 30);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
             this.optionsToolStripMenuItem.Text = "&Options";
+            // 
+            // calculatorToolStripMenuItem
+            // 
+            this.calculatorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("calculatorToolStripMenuItem.Image")));
+            this.calculatorToolStripMenuItem.Name = "calculatorToolStripMenuItem";
+            this.calculatorToolStripMenuItem.Size = new System.Drawing.Size(174, 30);
+            this.calculatorToolStripMenuItem.Text = "Calculator";
+            this.calculatorToolStripMenuItem.Click += new System.EventHandler(this.calculatorToolStripMenuItem_Click);
             // 
             // reportsToolStripMenuItem
             // 
@@ -1072,6 +1099,7 @@
             this.statusStrip.Size = new System.Drawing.Size(1263, 30);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
+            this.statusStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.statusStrip_ItemClicked);
             // 
             // toolStripStatusLabel
             // 
@@ -1079,19 +1107,20 @@
             this.toolStripStatusLabel.Size = new System.Drawing.Size(61, 25);
             this.toolStripStatusLabel.Text = "Status";
             // 
-            // assetCategoryToolStripMenuItem
+            // processToolStripMenuItem
             // 
-            this.assetCategoryToolStripMenuItem.Name = "assetCategoryToolStripMenuItem";
-            this.assetCategoryToolStripMenuItem.Size = new System.Drawing.Size(293, 30);
-            this.assetCategoryToolStripMenuItem.Text = "Asset Category";
-            this.assetCategoryToolStripMenuItem.Click += new System.EventHandler(this.assetCategoryToolStripMenuItem_Click);
+            this.processToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.startEndOfDayToolStripMenuItem});
+            this.processToolStripMenuItem.Name = "processToolStripMenuItem";
+            this.processToolStripMenuItem.Size = new System.Drawing.Size(84, 29);
+            this.processToolStripMenuItem.Text = "Process";
             // 
-            // assetSubCategoryToolStripMenuItem
+            // startEndOfDayToolStripMenuItem
             // 
-            this.assetSubCategoryToolStripMenuItem.Name = "assetSubCategoryToolStripMenuItem";
-            this.assetSubCategoryToolStripMenuItem.Size = new System.Drawing.Size(293, 30);
-            this.assetSubCategoryToolStripMenuItem.Text = "Asset Sub Category";
-            this.assetSubCategoryToolStripMenuItem.Click += new System.EventHandler(this.assetSubCategoryToolStripMenuItem_Click);
+            this.startEndOfDayToolStripMenuItem.Name = "startEndOfDayToolStripMenuItem";
+            this.startEndOfDayToolStripMenuItem.Size = new System.Drawing.Size(236, 30);
+            this.startEndOfDayToolStripMenuItem.Text = "Start /End Of Day";
+            this.startEndOfDayToolStripMenuItem.Click += new System.EventHandler(this.startEndOfDayToolStripMenuItem_Click);
             // 
             // MDIUpgrade
             // 
@@ -1239,6 +1268,9 @@
         private System.Windows.Forms.ToolStripMenuItem fixedAssetTransactionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem assetCategoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem assetSubCategoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem calculatorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem processToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem startEndOfDayToolStripMenuItem;
     }
 }
 

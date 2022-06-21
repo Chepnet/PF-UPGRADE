@@ -26,7 +26,7 @@ namespace SYSTEMUPGRADEPF
         Classes.Currency otrxCurrency = null;
 
         Classes.ExchangeRate oExchangeRate = new Classes.ExchangeRate();
-
+       
 
 
 
@@ -495,6 +495,8 @@ namespace SYSTEMUPGRADEPF
             //LoadCurrencies();
             // LoadForeignCurrencies();
             loadCurrencies();
+
+            dtPTransDate.Value = MDIUpgrade.Workingdate;
         }
 
         private void cmbDefaultCurrency_SelectedIndexChanged(object sender, EventArgs e)
@@ -797,6 +799,11 @@ namespace SYSTEMUPGRADEPF
                 xmlChargeAmounts = frm.xmlAmounts;
               
             }
+        }
+
+        private void txtCommision_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

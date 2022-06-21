@@ -136,12 +136,12 @@ namespace SYSTEMUPGRADEPF
                 cmbCalculationFormula.SelectedIndex = onewLoanType.InterestCalculationFormula;
                 cmbpostingmethod.SelectedIndex = onewLoanType.InterestPostingMethod;
                 cmbpostingfrequency.SelectedIndex = onewLoanType.InterestPostingFrequency;
-                cmbcalcuationoption.SelectedIndex = onewLoanType.PenaltyBalanceCalculationOption;
-                cmbfrequencycalculation.SelectedIndex = onewLoanType.PenaltyFrequencyCalculationOption;
+                cmbcalcuationoption.SelectedIndex = onewLoanType.PenaltyCalculationOption;
+                cmbfrequencycalculation.SelectedIndex = onewLoanType.PenaltyFrequencyCalculation ;
                 cmbpostingpenality.SelectedIndex = onewLoanType.PenaltyPostingMethod;
                 txtpenaltyValue.Text = onewLoanType.PenaltyValue.ToString("###,###.00");
                 txtthresholdDays.Text = onewLoanType.ThresholdDays.ToString();
-                txtMinpenaltyAmount.Text = onewLoanType.PenaltyMinLoanBalance.ToString("###,###.00");
+                txtMinpenaltyAmount.Text = onewLoanType.PenaltyMinAmount .ToString("###,###.00");
                 chkpenaltyisRate.Checked = onewLoanType.PenaltyIsRate;
                 chkApplyOnMaturity.Checked = onewLoanType.ApplyPenaltyAfterMaturity;
                 chkAllowZeroRating.Checked = onewLoanType.AllowPartialDisbursement;
@@ -163,6 +163,7 @@ namespace SYSTEMUPGRADEPF
                 txtroundingprincipal.Text = onewLoanType.PrincipalRoundingNearest.ToString();
                 cmbRoundInterest.SelectedIndex = onewLoanType.InterestRoundingValue;
                 cmbRoundPrinciapal.SelectedIndex = onewLoanType.PrincipalRoundingValue;
+                cmbAccrualFrequency.SelectedIndex = onewLoanType.PenaltyAccrualFrequency;
 
                 onewLoanCategory = oLoanCategory.GetLoanCategory(onewLoanType.LoanCategoriesId);
                 if (onewLoanCategory != null)
@@ -250,6 +251,7 @@ namespace SYSTEMUPGRADEPF
             txtMonthlyIntRate.Text = "";
             cmbPayMethod.SelectedIndex = 0;
             cmbCalculationFormula.SelectedIndex = 0;
+            cmbAccrualFrequency.SelectedIndex = 0;
             cmbpostingmethod.SelectedIndex = 0;
             cmbpostingfrequency.SelectedIndex = 0;
             cmbcalcuationoption.SelectedIndex = 0;
@@ -424,14 +426,14 @@ namespace SYSTEMUPGRADEPF
                 onewLoanType.PenaltyValue = penaltyvalue;
                 if (onewRepaymentPeriod != null)
                     onewLoanType.RepaymentFrequency = onewRepaymentPeriod.RepaymentPeriodId;
-                onewLoanType.PenaltyBalanceCalculationOption = cmbcalcuationoption.SelectedIndex;
+                onewLoanType.PenaltyCalculationOption  = cmbcalcuationoption.SelectedIndex;
                 onewLoanType.PenaltyPostingMethod = cmbpostingpenality.SelectedIndex;
                 int.TryParse(txtthresholdDays.Text, out thresholddays);
                 onewLoanType.ThresholdDays = thresholddays;
                 double.TryParse(txtMinpenaltyAmount.Text, out minpenalty);
-                onewLoanType.PenaltyMinLoanBalance = minpenalty;
+                onewLoanType.PenaltyMinAmount  = minpenalty;
                 onewLoanType.ApplyPenaltyAfterMaturity = chkApplyOnMaturity.Checked;
-                onewLoanType.PenaltyFrequencyCalculationOption = cmbfrequencycalculation.SelectedIndex;
+                onewLoanType.PenaltyFrequencyCalculation  = cmbfrequencycalculation.SelectedIndex;
                 onewLoanType.ConsinderInduplum = chkConsiderInduplumRule.Checked;
                 onewLoanType.AdjustableInterestRate = chkAdjustableinterestRate.Checked;
                 onewLoanType.ChargeFutureInterest = chkChargefutureinterest.Checked;
@@ -457,7 +459,7 @@ namespace SYSTEMUPGRADEPF
                 double.TryParse(txtmaxAmount.Text, out maxAmount);
                 onewLoanType.MaxAmount = maxAmount;
                 onewLoanType.InterestCalculationFormula = cmbCalculationFormula.SelectedIndex;
-
+                onewLoanType.PenaltyAccrualFrequency = cmbAccrualFrequency.SelectedIndex;
                 if (onewLoanCategory != null)
                     onewLoanType.LoanCategoriesId = onewLoanCategory.LoanCategoryId;
 
@@ -539,6 +541,7 @@ namespace SYSTEMUPGRADEPF
             cmbRoundPrinciapal.SelectedIndex = 0;
             cmbRoundInterest.SelectedIndex = 0;
             cmbRoundPrinciapal.SelectedIndex = 0;
+            cmbAccrualFrequency.SelectedIndex = 0;
             cmbpostingmethod.DropDownWidth = DropDownWidth(cmbpostingmethod);
             cmbCalculationFormula.DropDownWidth = DropDownWidth(cmbCalculationFormula);
             cmbcalcuationoption.DropDownWidth = DropDownWidth(cmbcalcuationoption);
@@ -547,6 +550,7 @@ namespace SYSTEMUPGRADEPF
             cmbPayMethod.DropDownWidth = DropDownWidth(cmbPayMethod);
             cmbpostingfrequency.DropDownWidth = DropDownWidth(cmbfrequencycalculation);
             cmbpostingpenality.DropDownWidth = DropDownWidth(cmbpostingpenality);
+            cmbAccrualFrequency.DropDownWidth = DropDownWidth(cmbAccrualFrequency);
         }
 
         private void btnSearchLoanCategory_Click(object sender, EventArgs e)

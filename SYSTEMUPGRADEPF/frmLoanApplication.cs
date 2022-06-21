@@ -1,14 +1,16 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using System.Collections;
+using Microsoft.VisualBasic;
+
 
 namespace SYSTEMUPGRADEPF
 {
@@ -36,7 +38,7 @@ namespace SYSTEMUPGRADEPF
             set { _save = value; }
         }
         private bool loadingexistingcurrency = false;
-        
+
 
 
 
@@ -84,7 +86,7 @@ namespace SYSTEMUPGRADEPF
         Classes.ExchangeRate onewExchangeRate = null;
 
         private bool Saving = false;
-      private   bool saved = false;
+        private bool saved = false;
 
         public int selInt;
 
@@ -385,7 +387,7 @@ namespace SYSTEMUPGRADEPF
             displayInfo();
 
         }
-      
+
         public void displayInfo()
         {
             if (onewLoanApplication != null)
@@ -456,11 +458,11 @@ namespace SYSTEMUPGRADEPF
 
                     }
                 }
-               
+
                 dtpAppDate.Text = onewLoanApplication.ApplicationDate.ToString();
                 dtpEffectDate.Text = onewLoanApplication.LoanEffectDate.ToString();
 
-              //  cmbCurrency.SelectedIndex = onewLoanApplication.ForeignCurrencyId-1;
+                //  cmbCurrency.SelectedIndex = onewLoanApplication.ForeignCurrencyId-1;
                 LoadLoanGuarantor();
                 LoadLoanApplicationCollaterals();
                 frmSearchProduct frm = new frmSearchProduct();
@@ -602,7 +604,7 @@ namespace SYSTEMUPGRADEPF
         private bool fullySecured()
         {
 
-           
+
             double guaranteedamount = 0;
             double collateralvalues = 0;
             double securedvalue = 0;
@@ -672,10 +674,10 @@ namespace SYSTEMUPGRADEPF
                 txtLoanType.Focus();
                 return;
             }
-            if (onewLoanPurpose  == null)
+            if (onewLoanPurpose == null)
             {
                 MessageBox.Show("Loan Purpose Is Required", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                txtLoanPurpose .Focus();
+                txtLoanPurpose.Focus();
                 return;
             }
             if (txtLoanAmount.Text.Trim() == "")
@@ -688,7 +690,7 @@ namespace SYSTEMUPGRADEPF
 
             double amountL, repay, interest = 0;
             double exchangerateid = 1;
-                      if (onewLoanApplication == null)
+            if (onewLoanApplication == null)
                 onewLoanApplication = new Classes.LoanApplication();
 
             if (onewMember != null)
@@ -698,7 +700,10 @@ namespace SYSTEMUPGRADEPF
             if (onewLoanPurpose != null)
                 onewLoanApplication.LoanPurposeId = onewLoanPurpose.LoanPurposeId;
             if (onewRepaymentPeriod != null)
+            {
                 onewLoanApplication.RepaymentPeriod = onewRepaymentPeriod.RepaymentPeriodId;
+            }
+                
 
             double.TryParse(txtInterestRate.Text, out interest);
             onewLoanApplication.InterestRate = interest;
@@ -706,59 +711,59 @@ namespace SYSTEMUPGRADEPF
             {
                 onewLoanApplication.LoanTypeId = onewLoanType.ProductId;
             }
-           
+
             double.TryParse(txtLoanAmount.Text, out amountL);
             onewLoanApplication.DefaultCurrencyId = odefCurrency.CurrencyId;
-            onewLoanApplication.ForeignCurrencyId = odefCurrency .CurrencyId;
+            onewLoanApplication.ForeignCurrencyId = odefCurrency.CurrencyId;
             onewLoanApplication.FCAmount = amountL;
-           
-            onewLoanApplication.LoanAmount = amountL ;
+
+            onewLoanApplication.LoanAmount = amountL;
             onewLoanApplication.ExchangeRate = exchangerateid;
-            if (odefCurrency.CurrencyId   !=otxrcurrency.CurrencyId   )
+            if (odefCurrency.CurrencyId != otxrcurrency.CurrencyId)
             {
-                onewLoanApplication.DefaultCurrencyId = odefCurrency.CurrencyId ;
-                onewLoanApplication.ForeignCurrencyId = otxrcurrency.CurrencyId ;
+                onewLoanApplication.DefaultCurrencyId = odefCurrency.CurrencyId;
+                onewLoanApplication.ForeignCurrencyId = otxrcurrency.CurrencyId;
                 onewLoanApplication.FCAmount = amountL;
-                onewLoanApplication.LoanAmount = exchangerate(amountL  , ref exchangerateid );
+                onewLoanApplication.LoanAmount = exchangerate(amountL, ref exchangerateid);
                 onewLoanApplication.ExchangeRate = exchangerateid;
             }
 
-            
-                if (!Updating)
+
+            if (!Updating)
+            {
+
+
+                if (onewLoanType != null)
                 {
-
-
-                    if (onewLoanType != null)
+                    if (onewLoanApplication.LoanAmount < onewLoanType.MinAmount)
                     {
-                        if (onewLoanApplication .LoanAmount  < onewLoanType.MinAmount)
-                        {
-                            MessageBox.Show("Loan Application Is below the minimum amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            txtLoanAmount.Focus();
-                            return;
-                        }
-
-                        if (onewLoanApplication.LoanAmount > onewLoanType.MaxAmount)
-                        {
-                            MessageBox.Show("Loan Application Is above the Maximum amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                            txtLoanAmount.Focus();
-                            return;
-                        }
-
-
-                    }
-                    if (onewLoanApplication.LoanAmount <= 0)
-                    {
-                        MessageBox.Show("Loan Amount cannot be zero or less", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Loan Application Is below the minimum amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         txtLoanAmount.Focus();
                         return;
                     }
-                }
-                //else
-                //{
-                //    onewLoanApplication.LoanAmount = amountL;
-                //}
 
-            
+                    if (onewLoanApplication.LoanAmount > onewLoanType.MaxAmount)
+                    {
+                        MessageBox.Show("Loan Application Is above the Maximum amount", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        txtLoanAmount.Focus();
+                        return;
+                    }
+
+
+                }
+                if (onewLoanApplication.LoanAmount <= 0)
+                {
+                    MessageBox.Show("Loan Amount cannot be zero or less", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    txtLoanAmount.Focus();
+                    return;
+                }
+            }
+            //else
+            //{
+            //    onewLoanApplication.LoanAmount = amountL;
+            //}
+
+
 
             double.TryParse(TxtRepaymentAmnt.Text, out repay);
             if (!Updating)
@@ -776,12 +781,12 @@ namespace SYSTEMUPGRADEPF
                     onewLoanApplication.LoanRepaymentAmount = repay;
                 }
             }
-            
+
 
             onewLoanApplication.ApplicationDate = dtpAppDate.Value;
-            onewLoanApplication.LoanEffectDate = dtpAppDate.Value;
+            onewLoanApplication.LoanEffectDate = dtpEffectDate .Value;
             onewLoanApplication.LoanCode = txtLoanCode.Text;
-           // onewLoanApplication.IsActive = chkIsActive.Checked;
+            // onewLoanApplication.IsActive = chkIsActive.Checked;
             onewLoanApplication.ManualRefNo = txtManualRefNo.Text;
 
 
@@ -817,14 +822,14 @@ namespace SYSTEMUPGRADEPF
 
                     }
                 }
-               
-               
+
+
                 if (error == "")
                 {
                     saved = true;
                     if (!Updating)
                     {
-                       
+
 
                         SaveOtherCharges();
                         MessageBox.Show("Process Succeded", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -859,13 +864,13 @@ namespace SYSTEMUPGRADEPF
                 }
             }
         }
-        private double exchangerate(double amount,ref double rate)
+        private double exchangerate(double amount, ref double rate)
         {
             double value = 0;
             ArrayList myList = oExchangeRate.GetExchangeRates();
-            foreach (Classes.ExchangeRate oexchrate in myList )
+            foreach (Classes.ExchangeRate oexchrate in myList)
             {
-                if((odefCurrency.CurrencyId ==oexchrate.DefaultCurrencyId )&&(otxrcurrency.CurrencyId ==oexchrate.ForeignCurrencyId))
+                if ((odefCurrency.CurrencyId == oexchrate.DefaultCurrencyId) && (otxrcurrency.CurrencyId == oexchrate.ForeignCurrencyId))
                 {
                     value = oexchrate.ExchangeRates * amount;
                     rate = oexchrate.ExchangeRates;
@@ -944,6 +949,7 @@ namespace SYSTEMUPGRADEPF
 
         private void frmLoanApplication_Load(object sender, EventArgs e)
         {
+            dtpAppDate.Value = MDIUpgrade.Workingdate;
             cmbLoanStatus.SelectedIndex = 1;
             loadCurrencies();
 
@@ -953,20 +959,20 @@ namespace SYSTEMUPGRADEPF
             cmbCurrency.Items.Clear();
             ArrayList myList = oCurrency.GetCurrencies();
             int defindex = 0, counter = 0;
-            foreach (Classes.Currency ocurren in  myList )
+            foreach (Classes.Currency ocurren in myList)
             {
-                cmbCurrency.Items.Add ( new Classes.ItemData.itemData(ocurren.Code, ocurren));
-                    if (ocurren.IsDefaultCurrency)
-                    {
-                        odefCurrency = ocurren;
-                        defindex = counter;
-                    }
-                
+                cmbCurrency.Items.Add(new Classes.ItemData.itemData(ocurren.Code, ocurren));
+                if (ocurren.IsDefaultCurrency)
+                {
+                    odefCurrency = ocurren;
+                    defindex = counter;
+                }
+
                 counter++;
             }
             cmbCurrency.SelectedIndex = defindex;
         }
-        
+
         private void toolStripPrevious_Click(object sender, EventArgs e)
         {
             moveToRecord(false);
@@ -1105,7 +1111,7 @@ namespace SYSTEMUPGRADEPF
                 double.TryParse(txtFreeShares.Text, out freeshares);
                 onewLoanGuarantor.FreeShares = freeshares;
                 onewLoanGuarantor.GuaranteedAmount = int.Parse(txtGuaranteedAmount.Text);
-               // onewLoanGuarantor.IsActive = chkIsActive.Checked;
+                // onewLoanGuarantor.IsActive = chkIsActive.Checked;
             }
 
             string error = "";
@@ -1222,7 +1228,7 @@ namespace SYSTEMUPGRADEPF
                 return;
             }
             frmSearchLoanTypeCollateral frm = new frmSearchLoanTypeCollateral();
-            frmLoanTypes frm1 = new frmLoanTypes();
+
 
             frm.PickingValues = true;
             frm.LoanTypeCollateralId = onewLoanApplication.LoanTypeId;
@@ -1668,17 +1674,17 @@ namespace SYSTEMUPGRADEPF
             onewLoan.ValueDate = frm.ValueDate;
             onewLoan.TransactionDate = frm.TransactionDate;
             string error = "";
-            if (frm.selMemberShareId >0)
+            if (frm.selMemberShareId > 0)
             {
                 onewLoan.LoanId = onewLoan.transferLoan(false, ref error);
             }
             else
             {
-                onewLoan.LoanId = onewLoan.AddEditLoan (false, ref error);
+                onewLoan.LoanId = onewLoan.transferLoan(false, ref error);
             }
-           
-            
-           
+
+
+
             if (error == "")
             {
                 MessageBox.Show("Process Suceded", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1691,8 +1697,7 @@ namespace SYSTEMUPGRADEPF
             }
         }
 
-
-
+        
         private void button3_Click_1(object sender, EventArgs e)
         {
 
@@ -1708,6 +1713,7 @@ namespace SYSTEMUPGRADEPF
                     cmbLoanStatus.SelectedIndex = 3;
                     Updating = true;
                     SaveLoanApplications();
+
                     SaveDisbursedLoans();
 
                     btnApprove.Enabled = false;
@@ -1746,7 +1752,7 @@ namespace SYSTEMUPGRADEPF
             if (onewLoanApplication != null)
             {
                 cmbLoanStatus.SelectedIndex = 2;
-               
+
                 SaveLoanApplications();
                 if (saved)
                 {
@@ -1760,9 +1766,9 @@ namespace SYSTEMUPGRADEPF
                     btnrejected.Enabled = true;
                     btnApprove.Enabled = true;
                 }
-               
-                
-               
+
+
+
             }
             else
             {
@@ -1791,7 +1797,7 @@ namespace SYSTEMUPGRADEPF
             {
 
                 frm.Amount = onewLoanApplication.LoanAmount;
-                frm.TransactingCurrencyId  = onewLoanApplication .ForeignCurrencyId ;
+                frm.TransactingCurrencyId = onewLoanApplication.ForeignCurrencyId;
                 frm.MemberId = onewLoanApplication.MemberId;
                 frm.ShowDialog();
                 onewLoan.LoanApplicationId = onewLoanApplication.LoanApplicationId;
@@ -1830,23 +1836,49 @@ namespace SYSTEMUPGRADEPF
             onewLoan.ModeOfPaymentId = frm.ModeOfPaymentId;
             onewLoan.ValueDate = frm.ValueDate;
             onewLoan.TransactionDate = frm.TransactionDate;
+
             onewLoan.MemberShareId = frm.selMemberShareId;
             onewLoan.SourceId = frm.selMemberShareId;
-            
+
+            if(onewRepaymentPeriod.PeriodReference == "Days")
+            {
+            onewLoan.NextDueDate = frm.TransactionDate.AddDays(onewRepaymentPeriod.FrequencyRange*onewLoanType.GracePeriod );
+            }
+            else if  (onewRepaymentPeriod.PeriodReference == "Months")
+            {
+                onewLoan.NextDueDate = frm.TransactionDate .AddMonths(onewRepaymentPeriod.FrequencyRange * onewLoanType.GracePeriod);
+            }
+            else if (onewRepaymentPeriod.PeriodReference == "Weeks")
+            {
+                onewLoan.NextDueDate = frm.TransactionDate .AddDays(onewRepaymentPeriod.FrequencyRange*7 * onewLoanType.GracePeriod);
+            }
+            else if (onewRepaymentPeriod.PeriodReference == "Year")
+            {
+                onewLoan.NextDueDate = frm.TransactionDate .AddYears(onewRepaymentPeriod.FrequencyRange * onewLoanType.GracePeriod);
+            }
+            onewLoan.LoanEffectDate = onewLoan.NextDueDate;
+
+
+
+
+
             onewLoan.CurrentPrincipalBalance = (onewLoan.PrincipalBalance) + (onewLoan.LoanAmount);
 
-          
+
 
 
 
             string error = "";
-            if(frm.selMemberShareId>0 )
+            if (frm.selMemberShareId > 0)
             {
                 onewLoan.LoanId = onewLoan.transferLoan(false, ref error);
+
+                
             }
-           else
+            else
             {
-                onewLoan.LoanId = onewLoan.AddEditLoan(false, ref error);
+                onewLoan.LoanId = onewLoan.AddEditLoan   (false, ref error);
+               
             }
             if (error == "")
             {
@@ -1880,6 +1912,28 @@ namespace SYSTEMUPGRADEPF
 
             }
 
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            // saveInterest(l);
+        }
+
+       
+
+        private void button1_Click_4(object sender, EventArgs e)
+        {
+            double IntAmount = 0, rate = 0, monthCount = 1, repayPeriod = 0, origAmount = 0, monthlyRepayment = 0;
+
+            double.TryParse(txtLoanAmount.Text, out origAmount);
+            double.TryParse(txtInterestRate.Text, out rate);
+            double.TryParse(txtRepaymentPeriod.Text, out repayPeriod);
+            double.TryParse(TxtRepaymentAmnt.Text, out monthCount);
+
+
+
+            IntAmount = Math.Abs(Financial.IPmt(rate / 36500, repayPeriod, monthCount, origAmount));
+            monthlyRepayment = Math.Abs(Financial.PPmt(rate / 36500, repayPeriod, monthCount, origAmount));
         }
     }
 }

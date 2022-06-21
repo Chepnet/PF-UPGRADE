@@ -118,6 +118,7 @@ namespace SYSTEMUPGRADEPF
 
         private void frmPayment_Load(object sender, EventArgs e)
         {
+            dtPTransDate.Value = MDIUpgrade.Workingdate;
             loadCurrencies();
 
         }
@@ -316,6 +317,19 @@ namespace SYSTEMUPGRADEPF
                 dtPTransDate.Value = onewPayment.TransDate;
                 txtPaidBy.Text = onewPayment.Description;
                 LoadCustomerInvoices();
+                for (int i = 0; i < cmbCurrencypay.Items.Count; i++)
+                {
+                    object obj = ((Classes.ItemData.itemData)(cmbCurrencypay .Items[i]))._itemData;
+                    Classes.Currency myCurrency = (Classes.Currency)obj;
+                    if (myCurrency != null)
+                    {
+                        if (myCurrency.CurrencyId == onewPayment .ForeignCurrencyId)
+                        {
+                            cmbCurrencypay .SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
             }
         }
     }

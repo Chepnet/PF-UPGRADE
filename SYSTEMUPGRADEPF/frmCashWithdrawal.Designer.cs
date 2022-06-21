@@ -38,6 +38,8 @@
             this.olvColumn10 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.objMemberShare = new BrightIdeasSoftware.ObjectListView();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.cmbCurrency = new System.Windows.Forms.ComboBox();
             this.txtPaidBy = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnBank = new System.Windows.Forms.Button();
@@ -87,8 +89,6 @@
             this.btnSearchMember = new System.Windows.Forms.Button();
             this.txtMemberName = new System.Windows.Forms.TextBox();
             this.pcbphoto = new System.Windows.Forms.PictureBox();
-            this.cmbCurrency = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.objListMemberShares)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objMemberShare)).BeginInit();
             this.tabPage1.SuspendLayout();
@@ -236,6 +236,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Transact";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(18, 175);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(76, 20);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "Currency:";
+            // 
+            // cmbCurrency
+            // 
+            this.cmbCurrency.FormattingEnabled = true;
+            this.cmbCurrency.Location = new System.Drawing.Point(153, 160);
+            this.cmbCurrency.Name = "cmbCurrency";
+            this.cmbCurrency.Size = new System.Drawing.Size(163, 28);
+            this.cmbCurrency.TabIndex = 19;
+            this.cmbCurrency.SelectedIndexChanged += new System.EventHandler(this.cmbCurrency_SelectedIndexChanged);
             // 
             // txtPaidBy
             // 
@@ -399,6 +417,7 @@
             // dtPTransDate
             // 
             this.dtPTransDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtPTransDate.Enabled = false;
             this.dtPTransDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtPTransDate.Location = new System.Drawing.Point(155, 30);
             this.dtPTransDate.Name = "dtPTransDate";
@@ -720,24 +739,6 @@
             this.pcbphoto.TabIndex = 11;
             this.pcbphoto.TabStop = false;
             this.pcbphoto.WaitOnLoad = true;
-            // 
-            // cmbCurrency
-            // 
-            this.cmbCurrency.FormattingEnabled = true;
-            this.cmbCurrency.Location = new System.Drawing.Point(153, 160);
-            this.cmbCurrency.Name = "cmbCurrency";
-            this.cmbCurrency.Size = new System.Drawing.Size(163, 28);
-            this.cmbCurrency.TabIndex = 19;
-            this.cmbCurrency.SelectedIndexChanged += new System.EventHandler(this.cmbCurrency_SelectedIndexChanged);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(18, 175);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(76, 20);
-            this.label12.TabIndex = 46;
-            this.label12.Text = "Currency:";
             // 
             // frmCashWithdrawal
             // 

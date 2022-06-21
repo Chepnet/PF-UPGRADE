@@ -23,6 +23,8 @@ namespace SYSTEMUPGRADEPF.Classes
         private DateTime _depEndDate = DateTime.Today;
         private string _remarks = "";
         private string _accountname = "";
+        private string _categoryname = "";
+        private string _subcategoryname = "";
         public int AssetId { get { return _assetId; } set { _assetId = value; } }
         public int CategoryId { get { return _categoryId; } set { _categoryId = value; } }
         public int SubCategoryId { get { return _subCategoryId; } set { _subCategoryId = value; } }
@@ -36,6 +38,11 @@ namespace SYSTEMUPGRADEPF.Classes
         public string Remarks { get { return _remarks; } set { _remarks = value; } }
         public string AccountName { get { return _accountname ; } set { _accountname  = value; } }
         public int GLAccountId { get { return _gLAccountId ; } set { _gLAccountId  = value; } }
+
+        public string CategoryName { get { return _categoryname ; } set { _categoryname  = value; } }
+        public string SubCategoryName { get { return _subcategoryname ; } set { _subcategoryname  = value; } }
+        AssetCategory oAssetcategory = new AssetCategory();
+        AssetSubCategory oSaubassetcategory = new AssetSubCategory();
         Bank oBank = new Bank();
 
 
@@ -69,6 +76,22 @@ namespace SYSTEMUPGRADEPF.Classes
                         if(myBank !=null)
                         {
                             obj.AccountName = myBank.BankName;
+                        }
+                    }
+                    if(obj.CategoryId >0)
+                    {
+                        AssetCategory myAssetCategory = oAssetcategory.GetAllAssetCategory(obj.CategoryId);
+                        if(myAssetCategory !=null)
+                        {
+                            obj.CategoryName = myAssetCategory.CategoryName;
+                        }
+                    }
+                    if (obj.SubCategoryId  > 0)
+                    {
+                        AssetSubCategory  myAssetSubCategory = oSaubassetcategory.GetAssetSubCategory (obj.SubCategoryId );
+                        if (myAssetSubCategory  != null)
+                        {
+                            obj.SubCategoryName  = myAssetSubCategory.SubCategoryName ;
                         }
                     }
                     myList.Add(obj);
@@ -108,7 +131,25 @@ namespace SYSTEMUPGRADEPF.Classes
                             obj.AccountName = myBank.BankName;
                         }
                     }
+
+                    if (obj.CategoryId > 0)
+                    {
+                        AssetCategory myAssetCategory = oAssetcategory.GetAllAssetCategory(obj.CategoryId);
+                        if (myAssetCategory != null)
+                        {
+                            obj.CategoryName = myAssetCategory.CategoryName;
+                        }
+                    }
+                    if (obj.SubCategoryId > 0)
+                    {
+                        AssetSubCategory myAssetSubCategory = oSaubassetcategory.GetAssetSubCategory(obj.SubCategoryId);
+                        if (myAssetSubCategory != null)
+                        {
+                            obj.SubCategoryName = myAssetSubCategory.SubCategoryName;
+                        }
+                    }
                 }
+
                 try { rd.Close(); }
                 catch {; }
             }

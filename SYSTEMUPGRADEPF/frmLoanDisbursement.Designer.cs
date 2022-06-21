@@ -175,6 +175,7 @@
             // dtpTransactionDate
             // 
             this.dtpTransactionDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtpTransactionDate.Enabled = false;
             this.dtpTransactionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTransactionDate.Location = new System.Drawing.Point(170, 60);
             this.dtpTransactionDate.Name = "dtpTransactionDate";

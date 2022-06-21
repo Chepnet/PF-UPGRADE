@@ -66,13 +66,13 @@
             // 
             // olvColumn1
             // 
-            this.olvColumn1.AspectName = "CategoryId";
+            this.olvColumn1.AspectName = "CategoryName";
             this.olvColumn1.Text = "Category";
             this.olvColumn1.Width = 140;
             // 
             // olvColumn2
             // 
-            this.olvColumn2.AspectName = "SubCategoryId";
+            this.olvColumn2.AspectName = "SubCategoryName";
             this.olvColumn2.Text = "Sub Category";
             this.olvColumn2.Width = 148;
             // 

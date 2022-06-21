@@ -51,6 +51,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cmbCurrency = new System.Windows.Forms.ComboBox();
+            this.label30 = new System.Windows.Forms.Label();
             this.txtMaxAmount = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.TxtMinAmount = new System.Windows.Forms.TextBox();
@@ -144,8 +146,6 @@
             this.btnApprove = new System.Windows.Forms.Button();
             this.btnDisburse = new System.Windows.Forms.Button();
             this.btnrejected = new System.Windows.Forms.Button();
-            this.label30 = new System.Windows.Forms.Label();
-            this.cmbCurrency = new System.Windows.Forms.ComboBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -414,6 +414,24 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Loan Details";
             // 
+            // cmbCurrency
+            // 
+            this.cmbCurrency.FormattingEnabled = true;
+            this.cmbCurrency.Location = new System.Drawing.Point(784, 66);
+            this.cmbCurrency.Name = "cmbCurrency";
+            this.cmbCurrency.Size = new System.Drawing.Size(163, 28);
+            this.cmbCurrency.TabIndex = 36;
+            this.cmbCurrency.SelectedIndexChanged += new System.EventHandler(this.cmbCurrency_SelectedIndexChanged);
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(666, 66);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(76, 20);
+            this.label30.TabIndex = 35;
+            this.label30.Text = "Currency:";
+            // 
             // txtMaxAmount
             // 
             this.txtMaxAmount.Location = new System.Drawing.Point(784, 199);
@@ -517,6 +535,7 @@
             // dtpAppDate
             // 
             this.dtpAppDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtpAppDate.Enabled = false;
             this.dtpAppDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpAppDate.Location = new System.Drawing.Point(126, 106);
             this.dtpAppDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -1343,24 +1362,6 @@
             this.btnrejected.Text = "Reject";
             this.btnrejected.UseVisualStyleBackColor = true;
             this.btnrejected.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(666, 66);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(76, 20);
-            this.label30.TabIndex = 35;
-            this.label30.Text = "Currency:";
-            // 
-            // cmbCurrency
-            // 
-            this.cmbCurrency.FormattingEnabled = true;
-            this.cmbCurrency.Location = new System.Drawing.Point(784, 66);
-            this.cmbCurrency.Name = "cmbCurrency";
-            this.cmbCurrency.Size = new System.Drawing.Size(163, 28);
-            this.cmbCurrency.TabIndex = 36;
-            this.cmbCurrency.SelectedIndexChanged += new System.EventHandler(this.cmbCurrency_SelectedIndexChanged);
             // 
             // frmLoanApplication
             // 

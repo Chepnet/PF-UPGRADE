@@ -73,8 +73,21 @@ namespace SYSTEMUPGRADEPF.Classes
         private int _reversalId = 0;
         private int _dimensionsetId = 0;
         private bool _isFeeTransaction = false;
-        
+
+        private int _interestId = 0;
+        private DateTime _transDate = DateTime.Today;
+        private double _interestAmount = 0;
+       private double _loanBalance = 0;
+        private DateTime _nextDueDate = DateTime.Today;
+
+
+        public int InterestId { get { return _interestId; } set { _interestId = value; } }
        
+        public DateTime TransDate { get { return _transDate; } set { _transDate = value; } }
+        public DateTime NextDueDate { get { return _nextDueDate; } set { _nextDueDate = value; } }
+        public double InterestAmount { get { return _interestAmount; } set { _interestAmount = value; } }
+       
+        public double LoanBalance { get { return _loanBalance; } set { _loanBalance = value; } }
 
 
         public int LoanId { get { return _loanId; } set { _loanId = value; } }
@@ -123,7 +136,7 @@ namespace SYSTEMUPGRADEPF.Classes
         public int SourceId { get { return _sourceId; } set { _sourceId = value; } }
         public double Arrears { get { return _arrears; } set { _arrears = value; } }
         public double CurrentPrincipalBalance { get { return _principalBalance; } set { _principalBalance = value; } }
-        public double InterestBalance { get { return _interestBalance; } set { _interestBalance = value; } }
+        public double InterestBalanceValue { get { return _interestBalance; } set { _interestBalance = value; } }
         public double PenaltyBalance { get { return _penaltyBalance; } set { _penaltyBalance = value; } }
 
         public string MemberName { get { return _memberName ; } set { _memberName = value; } }
@@ -154,6 +167,13 @@ namespace SYSTEMUPGRADEPF.Classes
 
             get { return this.getPrincipalBalance(); }
         }
+        public double InterestBalance
+        {
+
+            get { return this.getInterestBalance(); }
+        }
+        
+        
 
         public string err = "";
         public ArrayList GetLoans()
@@ -174,6 +194,7 @@ namespace SYSTEMUPGRADEPF.Classes
                     if (!String.IsNullOrEmpty(rd["ManualRefNo"].ToString())) obj.ManualRefNo = rd["ManualRefNo"].ToString();
                     if (!String.IsNullOrEmpty(rd["ApplicationDate"].ToString())) obj.ApplicationDate = DateTime.Parse(rd["ApplicationDate"].ToString());
                     if (!String.IsNullOrEmpty(rd["LoanEffectDate"].ToString())) obj.LoanEffectDate = DateTime.Parse(rd["LoanEffectDate"].ToString());
+                    if (!String.IsNullOrEmpty(rd["NextDueDate"].ToString())) obj.NextDueDate  = DateTime.Parse(rd["NextDueDate"].ToString());
                     if (!String.IsNullOrEmpty(rd["LoanPurposeId"].ToString())) obj.LoanPurposeId = int.Parse(rd["LoanPurposeId"].ToString());
                     if (!String.IsNullOrEmpty(rd["BranchId"].ToString())) obj.BranchId = int.Parse(rd["BranchId"].ToString());
                     if (!String.IsNullOrEmpty(rd["CreditOfficerId"].ToString())) obj.CreditOfficerId = int.Parse(rd["CreditOfficerId"].ToString());
@@ -260,7 +281,111 @@ namespace SYSTEMUPGRADEPF.Classes
             }
             return myList;
         }
-       
+        public ArrayList GetActiveLoans()
+        {
+            ArrayList myList = new ArrayList();
+            Link myLink = new Classes.Link();
+            DbDataReader rd = myLink.GetDBResults(ref err, "proc_getAllActiveLoans");
+            if (err == "")
+            {
+                while (rd.Read())
+                {
+                    Loan obj = new Classes.Loan();
+                    if (!String.IsNullOrEmpty(rd["LoanId"].ToString())) obj.LoanId = int.Parse(rd["LoanId"].ToString());
+                   //if (!String.IsNullOrEmpty(rd["LoanApplicationId"].ToString())) obj.LoanApplicationId = int.Parse(rd["LoanApplicationId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["MemberId"].ToString())) obj.MemberId = int.Parse(rd["MemberId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["LoanTypeId"].ToString())) obj.LoanTypeId = int.Parse(rd["LoanTypeId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["LoanCode"].ToString())) obj.LoanCode = rd["LoanCode"].ToString();
+                   // if (!String.IsNullOrEmpty(rd["ManualRefNo"].ToString())) obj.ManualRefNo = rd["ManualRefNo"].ToString();
+                   // if (!String.IsNullOrEmpty(rd["ApplicationDate"].ToString())) obj.ApplicationDate = DateTime.Parse(rd["ApplicationDate"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["LoanEffectDate"].ToString())) obj.LoanEffectDate = DateTime.Parse(rd["LoanEffectDate"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["LoanPurposeId"].ToString())) obj.LoanPurposeId = int.Parse(rd["LoanPurposeId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["BranchId"].ToString())) obj.BranchId = int.Parse(rd["BranchId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["CreditOfficerId"].ToString())) obj.CreditOfficerId = int.Parse(rd["CreditOfficerId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["DonorId"].ToString())) obj.DonorId = int.Parse(rd["DonorId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["RepaymentPeriod"].ToString())) obj.RepaymentPeriod = int.Parse(rd["RepaymentPeriod"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["LoanAmount"].ToString())) obj.LoanAmount = double.Parse(rd["LoanAmount"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["InterestRate"].ToString())) obj.InterestRate = double.Parse(rd["InterestRate"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["LoanStatusId"].ToString())) obj.LoanStatusId = int.Parse(rd["LoanStatusId"].ToString());
+                   // if (!String.IsNullOrEmpty(rd["LoanRepaymentAmount"].ToString())) obj.LoanRepaymentAmount = double.Parse(rd["LoanRepaymentAmount"].ToString());
+                   // //if (!String.IsNullOrEmpty(rd["DefaultCurrencyId"].ToString())) obj.DefaultCurrencyId = int.Parse(rd["DefaultCurrencyId"].ToString());
+                   // //if (!String.IsNullOrEmpty(rd["ForeignCurrencyId"].ToString())) obj.ForeignCurrencyId = int.Parse(rd["ForeignCurrencyId"].ToString());
+                   // //if (!String.IsNullOrEmpty(rd["ExchangeRate"].ToString())) obj.ExchangeRate = double.Parse(rd["ExchangeRate"].ToString());
+                   // //if (!String.IsNullOrEmpty(rd["FCAmount"].ToString())) obj.FCAmount = double.Parse(rd["FCAmount"].ToString());
+
+                    //if (!String.IsNullOrEmpty(rd["IsActive"].ToString())) obj.IsActive = bool.Parse(rd["IsActive"].ToString());
+
+
+
+
+                    //if (!String.IsNullOrEmpty(rd["TransactionId"].ToString())) obj.TransactionId = int.Parse(rd["TransactionId"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["SerialId"].ToString())) obj.SerialId = int.Parse(rd["SerialId"].ToString());
+                    ////if (!String.IsNullOrEmpty(rd["LoanId"].ToString())) obj.LoanId = int.Parse(rd["LoanId"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["ProductId"].ToString())) obj.ProductId = int.Parse(rd["ProductId"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["TransactionDate"].ToString())) obj.TransactionDate = DateTime.Parse(rd["TransactionDate"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["ValueDate"].ToString())) obj.ValueDate = DateTime.Parse(rd["ValueDate"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["Description"].ToString())) obj.Description = rd["Description"].ToString();
+                    //if (!String.IsNullOrEmpty(rd["TransactionType"].ToString())) obj.TransactionType = int.Parse(rd["TransactionType"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["DocumentNo"].ToString())) obj.DocumentNo = rd["DocumentNo"].ToString();
+                    //if (!String.IsNullOrEmpty(rd["ModeOfPaymentId"].ToString())) obj.ModeOfPaymentId = int.Parse(rd["ModeOfPaymentId"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["Principal"].ToString())) obj.LoanAmount  = double.Parse(rd["Principal"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["Interest"].ToString())) obj.Interest = double.Parse(rd["Interest"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["Penalty"].ToString())) obj.Penalty = double.Parse(rd["Penalty"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["PaidByName"].ToString())) obj.PaidByName = rd["PaidByName"].ToString();
+                    //if (!String.IsNullOrEmpty(rd["DebitGL"].ToString())) obj.DebitGL = int.Parse(rd["DebitGL"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["CreditGL"].ToString())) obj.CreditGL = int.Parse(rd["CreditGL"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["RunningBalance"].ToString())) obj.RunningBalance = double.Parse(rd["RunningBalance"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["IsReversed"].ToString())) obj.IsReversed = bool.Parse(rd["IsReversed"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["IsReversal"].ToString())) obj.IsReversal = bool.Parse(rd["IsReversal"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["ReversedByTransactionId"].ToString())) obj.ReversedByTransactionId = int.Parse(rd["ReversedByTransactionId"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["ReversingTransactionId"].ToString())) obj.ReversingTransactionId = int.Parse(rd["ReversingTransactionId"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["SourceType"].ToString())) obj.SourceType = int.Parse(rd["SourceType"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["SourceId"].ToString())) obj.SourceId = int.Parse(rd["SourceId"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["Arrears"].ToString())) obj.Arrears = double.Parse(rd["Arrears"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["PrincipalBalance"].ToString())) obj.CurrentPrincipalBalance  = double.Parse(rd["PrincipalBalance"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["InterestBalance"].ToString())) obj.InterestBalance = double.Parse(rd["InterestBalance"].ToString());
+                    //if (!String.IsNullOrEmpty(rd["PenaltyBalance"].ToString())) obj.PenaltyBalance = double.Parse(rd["PenaltyBalance"].ToString());
+
+
+                    if (obj.MemberId > 0)
+                    {
+                        Member myMember = oMember.GetMember(obj.MemberId);
+                        if (myMember != null)
+                        {
+                            obj.MemberName = myMember.MemberName;
+                        }
+                    }
+                    if (obj.LoanTypeId > 0)
+                    {
+                        LoanType myLoanType = oLoanType.GetLoanType(obj.LoanTypeId);
+                        if (myLoanType != null)
+                        {
+                            obj.LoanTypeDescription = myLoanType.LoanTypeName;
+                        }
+                    }
+                    if (obj.LoanPurposeId > 0)
+                    {
+                        LoanPurpose myLoanPurpose = oLoanPurpose.GetLoanPurpose(obj.LoanPurposeId);
+                        if (myLoanPurpose != null)
+                        {
+                            obj.LoanPurposeDescription = myLoanPurpose.Description;
+                        }
+                    }
+
+
+
+
+                    myList.Add(obj);
+                }
+                try
+                {
+                    rd.Close();
+                }
+                catch {; }
+            }
+            return myList;
+        }
+
 
         public Loan GetLoan(int LoanId)
         {
@@ -280,6 +405,7 @@ namespace SYSTEMUPGRADEPF.Classes
                     if (!String.IsNullOrEmpty(rd["ManualRefNo"].ToString())) obj.ManualRefNo = rd["ManualRefNo"].ToString();
                     if (!String.IsNullOrEmpty(rd["ApplicationDate"].ToString())) obj.ApplicationDate = DateTime.Parse(rd["ApplicationDate"].ToString());
                     if (!String.IsNullOrEmpty(rd["LoanEffectDate"].ToString())) obj.LoanEffectDate = DateTime.Parse(rd["LoanEffectDate"].ToString());
+                    if (!String.IsNullOrEmpty(rd["NextDueDate"].ToString())) obj.NextDueDate = DateTime.Parse(rd["NextDueDate"].ToString());
                     if (!String.IsNullOrEmpty(rd["LoanPurposeId"].ToString())) obj.LoanPurposeId = int.Parse(rd["LoanPurposeId"].ToString());
                     if (!String.IsNullOrEmpty(rd["BranchId"].ToString())) obj.BranchId = int.Parse(rd["BranchId"].ToString());
                     if (!String.IsNullOrEmpty(rd["CreditOfficerId"].ToString())) obj.CreditOfficerId = int.Parse(rd["CreditOfficerId"].ToString());
@@ -377,7 +503,7 @@ namespace SYSTEMUPGRADEPF.Classes
                             "@InterestRate", this.InterestRate,
                             "@LoanStatusId", this.LoanStatusId,
                             "@LoanRepaymentAmount", this.LoanRepaymentAmount,
-
+                            "@NextDueDate",this.NextDueDate,
                             "@TransactionId", this.TransactionId,
                             "@SerialId", 1,
                             //"@LoanId", this.LoanId,
@@ -433,10 +559,46 @@ namespace SYSTEMUPGRADEPF.Classes
                 return id;
            
         }
+        
+
+        public double getBalance()
+        {
+            double Bal = 0;
+            Link myLink = new Classes.Link();
+            DbDataReader rd = myLink.GetDBResults(ref err, "sp_getACPrincipalBalance", "@LoanId", this.LoanId);
+            if (err == "")
+            {
+                if (rd.Read())
+                {
+                    Bal = double.Parse(rd["PrincipalBalance"].ToString());
+                }
+                try { rd.Close(); }
+                catch {; }
+
+            }
+            return Bal;
+        }
+        public double getInterestBalance()
+        {
+            double Bal = 0;
+            Link myLink = new Classes.Link();
+            DbDataReader rd = myLink.GetDBResults(ref err, "proc_spInterestBalance", "@LoanId", this.LoanId);
+            if (err == "")
+            {
+                if (rd.Read())
+                {
+                    Bal = double.Parse(rd["InterestBalance"].ToString());
+                }
+                try { rd.Close(); }
+                catch {; }
+
+            }
+            return Bal;
+        }
         public int AddEditLoan(bool delete, ref string error)
         {
             int id = 0;
-            Link myLink = new Link();
+            Link myLink = new Classes.Link();
             DbDataReader rd = myLink.GetDBResults(ref err, "Proc_AddEditLoan", "@LoanId", this.LoanId,
                             "@LoanApplicationId", this.LoanApplicationId,
                             "@MemberId", this.MemberId,
@@ -454,7 +616,7 @@ namespace SYSTEMUPGRADEPF.Classes
                             "@InterestRate", this.InterestRate,
                             "@LoanStatusId", this.LoanStatusId,
                             "@LoanRepaymentAmount", this.LoanRepaymentAmount,
-
+                            "@NextDueDate", this.NextDueDate,
                             "@TransactionId", this.TransactionId,
                             "@SerialId", 1,
                             //"@LoanId", this.LoanId,
@@ -475,53 +637,42 @@ namespace SYSTEMUPGRADEPF.Classes
                             "@IsReversal", this.IsReversal,
                             "@ReversedByTransactionId", 1,
                             "@ReversingTransactionId", 2,
-                             "@SourceId", this.SourceId,
+                             "@SourceId", 0,
                             "@SourceType", "1",
                             "@Arrears", 0,
                             "@PrincipalBalance", this.CurrentPrincipalBalance,
                             "@InterestBalance", 0,
                             "@PenaltyBalance", 0,
-                            "@Principal", this.LoanAmount,
                             "@DefaultCurrencyId", this.DefaultCurrencyId,
                             "@ForeignCurrencyId", this.ForeignCurrencyId,
                             "@FCAmount", this.FCAmount,
                             "@ExchangeRate", this.ExchangeRate,
-                            "@IsActive", this.IsActive,
                             "@delete", delete,
                             "@MachineName", "USER-PC",
-                            "@CreatedBy", "Admin");
+                             "@CreatedBy", "Admin" );
+                            
             if (err == "")
             {
+
                 if (rd.Read())
                 {
                     id = int.Parse(rd["Id"].ToString());
                 }
-                try { rd.Close(); }
+                try
+                {
+                    rd.Close();
+                }
                 catch {; }
+
+
             }
             error = err;
             return id;
-
         }
 
-        public double getPrincipalBalance()
+        internal int AddEditLoan(bool v, int paymethod, int postingfrequency, double interestAmount, int dailyratespecification, object transDate, ref object error)
         {
-            double Bal = 0;
-            Link myLink = new Classes.Link();
-            DbDataReader rd = myLink.GetDBResults(ref err, "sp_getACPrincipalBalance", "@LoanId", this.LoanId);
-            if (err == "")
-            {
-                if (rd.Read())
-                {
-                    Bal = double.Parse(rd["PrincipalBalance"].ToString());
-                }
-                try { rd.Close(); }
-                catch {; }
-
-            }
-            return Bal;
+            throw new NotImplementedException();
         }
-
-
     }
 }

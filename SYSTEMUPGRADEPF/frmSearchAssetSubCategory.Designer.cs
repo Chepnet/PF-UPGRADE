@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.objList = new BrightIdeasSoftware.ObjectListView();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAddNew = new System.Windows.Forms.Button();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddNew = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.objList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -49,6 +49,7 @@
             this.olvColumn1,
             this.olvColumn2,
             this.olvColumn3});
+            this.objList.Cursor = System.Windows.Forms.Cursors.Default;
             this.objList.Dock = System.Windows.Forms.DockStyle.Top;
             this.objList.FullRowSelect = true;
             this.objList.GridLines = true;
@@ -63,6 +64,24 @@
             this.objList.View = System.Windows.Forms.View.Details;
             this.objList.SelectedIndexChanged += new System.EventHandler(this.objList_SelectedIndexChanged);
             this.objList.DoubleClick += new System.EventHandler(this.objList_DoubleClick);
+            // 
+            // olvColumn1
+            // 
+            this.olvColumn1.AspectName = "CategoryName";
+            this.olvColumn1.Text = "Category Name";
+            this.olvColumn1.Width = 248;
+            // 
+            // olvColumn2
+            // 
+            this.olvColumn2.AspectName = "SubCategoryName";
+            this.olvColumn2.Text = "Sub Category Name";
+            this.olvColumn2.Width = 223;
+            // 
+            // olvColumn3
+            // 
+            this.olvColumn3.AspectName = "Remarks";
+            this.olvColumn3.Text = "Remarks";
+            this.olvColumn3.Width = 194;
             // 
             // panel1
             // 
@@ -82,21 +101,6 @@
             this.btnAddNew.Text = "Add New...";
             this.btnAddNew.UseVisualStyleBackColor = true;
             this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
-            // 
-            // olvColumn1
-            // 
-            this.olvColumn1.AspectName = "CategoryName";
-            this.olvColumn1.Text = "CategoryName";
-            // 
-            // olvColumn2
-            // 
-            this.olvColumn2.AspectName = "SubCategoryName";
-            this.olvColumn2.Text = "Sub Category Name";
-            // 
-            // olvColumn3
-            // 
-            this.olvColumn3.AspectName = "Remarks";
-            this.olvColumn3.Text = "Remarks";
             // 
             // frmSearchAssetSubCategory
             // 

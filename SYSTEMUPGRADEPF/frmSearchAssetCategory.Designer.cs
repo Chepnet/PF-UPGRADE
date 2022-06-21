@@ -60,7 +60,7 @@
             this.objList.Location = new System.Drawing.Point(0, 0);
             this.objList.Name = "objList";
             this.objList.ShowGroups = false;
-            this.objList.Size = new System.Drawing.Size(1059, 376);
+            this.objList.Size = new System.Drawing.Size(1291, 376);
             this.objList.TabIndex = 0;
             this.objList.UseAlternatingBackColors = true;
             this.objList.UseCompatibleStateImageBehavior = false;
@@ -96,15 +96,15 @@
             // 
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 378);
+            this.panel1.Location = new System.Drawing.Point(0, 393);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1059, 55);
+            this.panel1.Size = new System.Drawing.Size(1291, 55);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(906, 5);
+            this.button1.Location = new System.Drawing.Point(1138, 14);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 38);
             this.button1.TabIndex = 0;
@@ -116,7 +116,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1059, 433);
+            this.ClientSize = new System.Drawing.Size(1291, 448);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.objList);
             this.MaximizeBox = false;

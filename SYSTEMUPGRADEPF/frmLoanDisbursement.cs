@@ -116,7 +116,7 @@ namespace SYSTEMUPGRADEPF
 
         private void frmLoanDisbursement_Load(object sender, EventArgs e)
         {
-           
+            dtpTransactionDate.Value = MDIUpgrade.Workingdate;
               
                 loadCurrencies();
             

@@ -31,6 +31,8 @@ namespace SYSTEMUPGRADEPF
         Classes.Currency otrxCurrency = null;
         Classes.AssetTransaction oAssetTransaction = new Classes.AssetTransaction();
         Classes.AssetTransaction onewAssetTransaction = null;
+        Classes.AssetCategory oAssetCategory = new Classes.AssetCategory();
+        Classes.AssetCategory onewAssetcategory = null;
         private void btnAsset_Click(object sender, EventArgs e)
         {
             frmSearchAssetRegister frm = new SYSTEMUPGRADEPF.frmSearchAssetRegister();
@@ -39,6 +41,18 @@ namespace SYSTEMUPGRADEPF
             if(onewAssetRegister !=null)
             {
                 txtAsset.Text = onewAssetRegister.Name;
+                onewAssetcategory = oAssetCategory.GetAllAssetCategory(onewAssetRegister.CategoryId);
+                if(onewAssetcategory != null)
+                {
+                    onewChartOfAccount = oChartOfAccount.GetChartOfAccount(onewAssetcategory.OriginalCostGLId);
+                    if(onewChartOfAccount !=null)
+                    {
+                        txtAssetGL.Text = onewChartOfAccount.AccountName;
+                    }
+
+                }
+                
+
             }
         }
 
@@ -73,6 +87,7 @@ namespace SYSTEMUPGRADEPF
         private void frmAssetTransaction_Load(object sender, EventArgs e)
         {
             loadCurrencies();
+            dtpTransDate.Value = MDIUpgrade.Workingdate;
         }
         private void loadCurrencies()
         {
@@ -127,11 +142,33 @@ namespace SYSTEMUPGRADEPF
             onewChartOfAccount = null;
             onewAssetTransaction = null;
             onewBank = null;
+            txtbankGl.Text = "";
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
         {
             double exchangerate = 1, amount = 0;
+            if(onewAssetcategory ==null)
+            {
+                MessageBox.Show("Asset Category is required", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (txtAmount.Text .Trim()=="")
+            {
+                MessageBox.Show("Asset Amount is required", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (TXTModeofpayment.Text.Trim() =="")
+            {
+                MessageBox.Show("Mode Of Payment is required", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            if (txtBank  .Text.Trim() == "")
+            {
+                MessageBox.Show("Bank is required", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             if (onewAssetTransaction == null)
             {
                 onewAssetTransaction = new Classes.AssetTransaction();
@@ -147,7 +184,7 @@ namespace SYSTEMUPGRADEPF
                 onewAssetTransaction.Amount = amount;
                 if (onewmodeofpayment != null)
                     onewAssetTransaction.ModeOfPaymentId = onewmodeofpayment.ModeOfPaymentId;
-                onewAssetTransaction.TransDate = dateTimePicker1.Value;
+                onewAssetTransaction.TransDate = dtpTransDate.Value;
                 string error = "";
                 onewAssetTransaction.AssetTransactionId = onewAssetTransaction.AddEditAssetTransaction(false, ref error);
                 if (error == "")
@@ -266,6 +303,15 @@ namespace SYSTEMUPGRADEPF
                 if (onewAssetRegister != null)
                 {
                     txtAsset.Text = onewAssetRegister.Name;
+                    onewAssetcategory = oAssetCategory.GetAllAssetCategory(onewAssetRegister.CategoryId );
+                    if(onewAssetcategory !=null)
+                    {
+                        onewChartOfAccount = oChartOfAccount.GetChartOfAccount(onewAssetcategory.OriginalCostGLId);
+                        if(onewChartOfAccount !=null)
+                        {
+                            txtAssetGL.Text = onewChartOfAccount.AccountName;
+                        }
+                    }
                 }
                 onewBank = oBank.GetBank(onewAssetTransaction.BankId);
                 {
@@ -286,8 +332,22 @@ namespace SYSTEMUPGRADEPF
                 }
 
 
-                dateTimePicker1.Value = onewAssetTransaction.TransDate;
+                dtpTransDate.Value = onewAssetTransaction.TransDate;
                 txtDocumentNo.Text = onewAssetTransaction.DocumentNo;
+
+                for (int i = 0; i < cmbCurrency.Items.Count; i++)
+                {
+                    object obj = ((Classes.ItemData.itemData)(cmbCurrency.Items[i]))._itemData;
+                    Classes.Currency myCurrency = (Classes.Currency)obj;
+                    if (myCurrency != null)
+                    {
+                        if (myCurrency.CurrencyId == onewAssetTransaction .ForeignCurrencyId)
+                        {
+                            cmbCurrency.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
 
             }
         }

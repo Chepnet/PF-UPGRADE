@@ -99,6 +99,7 @@ namespace SYSTEMUPGRADEPF
 
         private void frmInvoice_Load(object sender, EventArgs e)
         {
+            dateTimePicker1.Value = MDIUpgrade.Workingdate;
             //loadItemrequired();
             loadCurrencies();
 
@@ -168,13 +169,17 @@ namespace SYSTEMUPGRADEPF
             onewInvoice.InvoiceDate = dateTimePicker1.Value;
             onewInvoice.InvoiceTo  = txtInvoiceTo.Text;
             onewInvoice.InvoiceNo = txtInvoiceNo.Text;
+            if(onewModeOfPayment !=null)
             onewInvoice.PayMode = onewModeOfPayment.ModeOfPaymentId;
             onewInvoice.Terms = txtTerms .Text;
             onewInvoice.Total =total ;
             onewInvoice.Subtotal  = subtotal ;
             onewInvoice.VATTotal = VATAmount ;
+            if(onewBank !=null)
             onewInvoice.BankId = onewBank.BankId;
+            if(odefCurrency !=null)
             onewInvoice.DefaultCurrencyId = odefCurrency.CurrencyId;
+            if(otrxCurrency !=null)
             onewInvoice.ForeignCurrencyId = otrxCurrency.CurrencyId;
             onewInvoice.FCAmount = total;
             onewInvoice.ExchangeRate = exchangerateid;
@@ -453,6 +458,19 @@ namespace SYSTEMUPGRADEPF
                 txtTerms.Text = onewInvoice.Terms;
 
                 loadItemrequired();
+                for (int i = 0; i < cmbCurrency.Items.Count; i++)
+                {
+                    object obj = ((Classes.ItemData.itemData)(cmbCurrency.Items[i]))._itemData;
+                    Classes.Currency myCurrency = (Classes.Currency)obj;
+                    if (myCurrency != null)
+                    {
+                        if (myCurrency.CurrencyId == onewInvoice.ForeignCurrencyId)
+                        {
+                            cmbCurrency.SelectedIndex = i;
+                            break;
+                        }
+                    }
+                }
             }
         }
 

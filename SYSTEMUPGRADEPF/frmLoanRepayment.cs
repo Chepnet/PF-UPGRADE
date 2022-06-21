@@ -19,6 +19,7 @@ namespace SYSTEMUPGRADEPF
             InitializeComponent();
         }
         public int selInt = 0;
+        
         Classes.MemberShare oMembershare = new MemberShare();
         Classes.MemberShare onewMembershare = null;
         Classes.LoanApplication oLoanApplication = new Classes.LoanApplication();
@@ -52,6 +53,7 @@ namespace SYSTEMUPGRADEPF
         Classes.ExchangeRate onewExchangeRate = null;
         private int SelMemberShareId = 0;
         private bool loadingselectedcurrencies = false;
+        private double TotalBalance = 0;
         public bool LoadingSelectedCurrencies
         {
             get { return loadingselectedcurrencies; }
@@ -100,14 +102,18 @@ namespace SYSTEMUPGRADEPF
             {
                 if(onewMember.MemberId ==olo.MemberId )
                 {
+                    olo.RunningBalance = olo.PrincipalBalance + olo.InterestBalance;
+                    TotalBalance = olo.RunningBalance;
                     newList.Add(olo);
                 }
             }
+           
             objListLoans.SetObjects(newList);
         }
 
         private void frmLoanRepayment_Load(object sender, EventArgs e)
         {
+            dtpTransactionDate.Value = MDIUpgrade.Workingdate;
             loadCurrencies();
         }
         private void loadCurrencies()
@@ -215,42 +221,73 @@ namespace SYSTEMUPGRADEPF
                 onewLoanTransaction.DebitGL = onewBANK.BankId;
 
             }
-            
+            double.TryParse(txtAmount.Text, out amount);
+            double principalpaid = 0;
+            double totalamountpaid = 0;
             onewLoanTransaction.PaidByName = txtPaid.Text;
-            double .TryParse(txtAmount.Text, out amount);
+            onewLoanTransaction.Description = txtDescription.Text;
+            onewLoanTransaction.TransactionDate = dtpTransactionDate.Value;
+            onewLoanTransaction.ValueDate = dtpValueDate.Value;
+            onewLoanTransaction.DefaultCurrencyId = odefCurrency.CurrencyId;
+            onewLoanTransaction.ForeignCurrencyId = odefCurrency.CurrencyId;
+            onewLoanTransaction.ExchangeRate = 1;
+
+            if (amount > onewLoan.InterestBalance)
+            {
+                principalpaid = amount - onewLoan.InterestBalance;
+                onewLoanTransaction.Principal =- principalpaid;
+                onewLoanTransaction.PrincipalBalanceValue = onewLoan.PrincipalBalance  - principalpaid;
+                onewLoanTransaction.Interest = onewLoan.InterestBalance;
+                onewLoanTransaction.InterestBalance = 0;
+            }
+            else
+            {
+                principalpaid = 0;
+                onewLoanTransaction.Principal = -principalpaid;
+                onewLoanTransaction.PrincipalBalanceValue = onewLoan.PrincipalBalance  - principalpaid;
+                onewLoanTransaction.Interest = amount;
+                onewLoanTransaction.InterestBalance = (onewLoan.InterestBalance - amount);
+            }
             
-                if(onewLoan.PrincipalBalance -amount <0)
+            if (odefCurrency.CurrencyId != otrxCurrency.CurrencyId)
+            {
+                totalamountpaid  = (ExchangedRate(amount, ref exchangerateid));
+                onewLoanTransaction.DefaultCurrencyId = odefCurrency.CurrencyId;
+                onewLoanTransaction.ForeignCurrencyId = otrxCurrency.CurrencyId;
+                onewLoanTransaction.FCAmount = -amount;
+                onewLoanTransaction.ExchangeRate = exchangerateid;
+                if(amount >onewLoan.InterestBalance )
+                {
+                    principalpaid = totalamountpaid - onewLoan.InterestBalance;
+                    onewLoanTransaction.Principal =- principalpaid;
+                    onewLoanTransaction.PrincipalBalanceValue = onewLoan.PrincipalBalance   -principalpaid ;
+                    onewLoanTransaction.Interest = onewLoan.InterestBalance;
+                    onewLoanTransaction.InterestBalance = 0;
+                }
+                else
+                {
+                    principalpaid = 0;
+                    onewLoanTransaction.Principal = -principalpaid;
+                    onewLoanTransaction.PrincipalBalanceValue = onewLoan.PrincipalBalance  - principalpaid;
+                    onewLoanTransaction.Interest = totalamountpaid  ;
+                    onewLoanTransaction.InterestBalance = onewLoan.InterestBalance - totalamountpaid ;
+                }
+               
+
+            }
+
+
+            
+                if (onewLoan.PrincipalBalance -principalpaid < 0)
                 {
                     MessageBox.Show("Should not overpay", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     txtAmount.Focus();
                     return;
                 }
-                else
-                {
-                    onewLoanTransaction.Principal = -amount;
-                }
-            
-            
-            
-            onewLoanTransaction.Description = txtDescription.Text;
-            onewLoanTransaction.TransactionDate = dtpTransactionDate.Value;
-            onewLoanTransaction.ValueDate = dtpValueDate.Value;
-            onewLoanTransaction.DefaultCurrencyId = odefCurrency.CurrencyId;
-            onewLoanTransaction.ForeignCurrencyId = odefCurrency .CurrencyId;
-            onewLoanTransaction.FCAmount = -amount;
-            onewLoanTransaction.Principal  = -amount  ;
-            onewLoanTransaction.ExchangeRate = 1;
-            onewLoanTransaction.PrincipalBalanceValue = (onewLoan .PrincipalBalance ) - amount;
-            if (odefCurrency .CurrencyId !=otrxCurrency.CurrencyId )
-            {
-                onewLoanTransaction.DefaultCurrencyId = odefCurrency.CurrencyId;
-                onewLoanTransaction.ForeignCurrencyId = otrxCurrency .CurrencyId;
-                onewLoanTransaction.FCAmount = -amount ;
-                onewLoanTransaction.Principal  = -(ExchangedRate(amount, ref exchangerateid));
-                onewLoanTransaction.ExchangeRate = exchangerateid ;
-                onewLoanTransaction.PrincipalBalanceValue  =onewLoanTransaction.LoanPrincipalBalance +(-(ExchangedRate(amount, ref exchangerateid)));
-            }
-            if(SelMemberShareId >0)
+                
+             
+
+            if (SelMemberShareId >0)
             onewLoanTransaction.MemberShareId = SelMemberShareId ;
             string error = "";
             if(SelMemberShareId > 0)
@@ -259,6 +296,7 @@ namespace SYSTEMUPGRADEPF
             }
             else
             {
+                
                 onewLoanTransaction.TransactionId = onewLoanTransaction.AddEditLoanTransaction(false, ref error);
 
             }
@@ -267,6 +305,7 @@ namespace SYSTEMUPGRADEPF
             {
                 MessageBox.Show("Process suceded", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadLoanRepayment();
+                GetAllMemberLoans();
                 ClearText();
             }
             else
@@ -381,13 +420,7 @@ namespace SYSTEMUPGRADEPF
                     txtPaid.Text = onewLoanTransaction.PaidByName;
                     txtDescription.Text = onewLoanTransaction.Description;
                    
-                    otrxCurrency = oCurrency.GetCurrency(onewLoanTransaction.ForeignCurrencyId);
-                    if(otrxCurrency != null)
-                    {
-                        LoadingSelectedCurrencies = true;
-                        cmbCurrency.SelectedIndex   = otrxCurrency.CurrencyId-1   ;
-                        loadCurrencies();
-                    }
+                    
 
                     }
                 }
@@ -406,6 +439,7 @@ namespace SYSTEMUPGRADEPF
                 {
                     if(onewLoan.LoanId ==olotrans .LoanId )
                     {
+                        TotalBalance = olotrans.RunningBalance;
                         newList.Add(olotrans);
                     }
                 }
@@ -435,6 +469,11 @@ namespace SYSTEMUPGRADEPF
             {
                 otrxCurrency = myCurrency;
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

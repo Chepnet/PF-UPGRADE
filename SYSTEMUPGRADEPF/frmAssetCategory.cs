@@ -25,6 +25,8 @@ namespace SYSTEMUPGRADEPF
         private void btnCategory_Click(object sender, EventArgs e)
         {
             frmSearchChartOfAccounts frm = new SYSTEMUPGRADEPF.frmSearchChartOfAccounts();
+            frm.PickingValues = true;
+            frm.PostingAccount = true;
             frm.ShowDialog();
             onewChartOfAccount = oChartOfAccount.GetChartOfAccount(frm.sellInt);
             if(onewChartOfAccount !=null)
@@ -36,6 +38,8 @@ namespace SYSTEMUPGRADEPF
         private void button1_Click(object sender, EventArgs e)
         {
             frmSearchChartOfAccounts frm = new SYSTEMUPGRADEPF.frmSearchChartOfAccounts();
+            frm.PickingValues = true;
+            frm.PostingAccount = true;
             frm.ShowDialog();
             onewDepreciationChartOfAccount  = oChartOfAccount.GetChartOfAccount(frm.sellInt);
             if (onewDepreciationChartOfAccount  != null)

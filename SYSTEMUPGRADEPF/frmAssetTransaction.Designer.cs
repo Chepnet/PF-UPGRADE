@@ -46,7 +46,7 @@
             this.txtbankGl = new System.Windows.Forms.TextBox();
             this.txtDocumentNo = new System.Windows.Forms.TextBox();
             this.cmbCurrency = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpTransDate = new System.Windows.Forms.DateTimePicker();
             this.btnPayMode = new System.Windows.Forms.Button();
             this.btnAsset = new System.Windows.Forms.Button();
             this.btnBank = new System.Windows.Forms.Button();
@@ -201,14 +201,15 @@
             this.cmbCurrency.TabIndex = 2;
             this.cmbCurrency.SelectedIndexChanged += new System.EventHandler(this.cmbCurrency_SelectedIndexChanged);
             // 
-            // dateTimePicker1
+            // dtpTransDate
             // 
-            this.dateTimePicker1.CustomFormat = "dd-MMM-yyyy";
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(172, 194);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(207, 26);
-            this.dateTimePicker1.TabIndex = 3;
+            this.dtpTransDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtpTransDate.Enabled = false;
+            this.dtpTransDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpTransDate.Location = new System.Drawing.Point(172, 194);
+            this.dtpTransDate.Name = "dtpTransDate";
+            this.dtpTransDate.Size = new System.Drawing.Size(207, 26);
+            this.dtpTransDate.TabIndex = 3;
             // 
             // btnPayMode
             // 
@@ -350,7 +351,7 @@
             this.Controls.Add(this.btnBank);
             this.Controls.Add(this.btnAsset);
             this.Controls.Add(this.btnPayMode);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpTransDate);
             this.Controls.Add(this.cmbCurrency);
             this.Controls.Add(this.txtDocumentNo);
             this.Controls.Add(this.txtbankGl);
@@ -401,7 +402,7 @@
         private System.Windows.Forms.TextBox txtbankGl;
         private System.Windows.Forms.TextBox txtDocumentNo;
         private System.Windows.Forms.ComboBox cmbCurrency;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpTransDate;
         private System.Windows.Forms.Button btnPayMode;
         private System.Windows.Forms.Button btnAsset;
         private System.Windows.Forms.Button btnBank;

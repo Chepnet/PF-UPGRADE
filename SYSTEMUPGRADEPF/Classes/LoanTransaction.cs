@@ -193,6 +193,64 @@ namespace SYSTEMUPGRADEPF.Classes
             }
             return myList;
         }
+        public ArrayList GetLoanInterestTransactions()
+        {
+            ArrayList myList = new ArrayList();
+            Link myLink = new Classes.Link();
+            DbDataReader rd = myLink.GetDBResults(ref err, "proc_getAllLoanTransactions");
+            if (err == "")
+            {
+                while (rd.Read())
+                {
+                    LoanTransaction obj = new Classes.LoanTransaction();
+                  
+                    if (!String.IsNullOrEmpty(rd["LoanId"].ToString())) obj.LoanId = int.Parse(rd["LoanId"].ToString());
+                    if (!String.IsNullOrEmpty(rd["TransDate"].ToString())) obj.TransactionDate = DateTime.Parse(rd["TransDate"].ToString());
+                    if (!String.IsNullOrEmpty(rd["Principal"].ToString())) obj.Principal = double.Parse(rd["Principal"].ToString());
+                    if (!String.IsNullOrEmpty(rd["Interest"].ToString())) obj.Interest = double.Parse(rd["Interest"].ToString());
+                    if (!String.IsNullOrEmpty(rd["Arrears"].ToString())) obj.Arrears = double.Parse(rd["Arrears"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PrincipalBalance"].ToString())) obj.PrincipalBalanceValue = double.Parse(rd["PrincipalBalance"].ToString());
+                    if (!String.IsNullOrEmpty(rd["InterestBalance"].ToString())) obj.InterestBalance = double.Parse(rd["InterestBalance"].ToString());
+                   
+
+
+                    if (obj.ModeOfPaymentId > 0)
+                    {
+                        ModeOfPayment myModeofPayment = oModeOfPayment.GetModeOfPayment(obj.ModeOfPaymentId);
+                        if (myModeofPayment != null)
+                        {
+                            obj.ModeOfPaymentDescription = myModeofPayment.Description;
+                        }
+                    }
+                    if (obj.ProductId > 0)
+                    {
+                        Product myProduct = oProduct.GetProduct(obj.ProductId);
+                        if (myProduct != null)
+                        {
+                            obj.ProductName = myProduct.Description;
+                        }
+                    }
+                    if (obj.LoanId > 0)
+                    {
+                        Loan myLoan = oLoan.GetLoan(obj.LoanId);
+                        if (myLoan != null)
+                        {
+                            obj.LoanName = myLoan.LoanTypeDescription;
+                        }
+                    }
+
+
+                    myList.Add(obj);
+
+                }
+                try
+                {
+                    rd.Close();
+                }
+                catch {; }
+            }
+            return myList;
+        }
 
         public LoanTransaction  GetLoanTransaction(int LoanTransactionId)
         {
@@ -277,7 +335,9 @@ namespace SYSTEMUPGRADEPF.Classes
         {
             int id = 0;
             Link myLink = new Link();
-            DbDataReader rd = myLink.GetDBResults(ref err, "proc_AddEditLoanTransaction", "@LoanId", this.LoanId,
+            //DbDataReader rd = myLink.GetDBResults(ref err, "proc_AddEditLoanTransaction", "@LoanId", this.LoanId,
+
+            DbDataReader rd = myLink.GetDBResults(ref err, "proc_AddEditLoanInterestTransaction", "@LoanId", this.LoanId,
 "@TransactionId", this.TransactionId,
 "@SerialId", 1,
 //"@LoanId", this.LoanId,
@@ -289,7 +349,7 @@ namespace SYSTEMUPGRADEPF.Classes
 "@DocumentNo", this.DocumentNo,
 "@ModeOfPaymentId", this.ModeOfPaymentId,
 "@Principal", this.Principal,
-"@Interest", 0,
+"@Interest", this.Interest ,
 "@Penalty", 0,
 "@PaidByName", this.PaidByName,
 "@DebitGL", this.DebitGL,
@@ -301,9 +361,9 @@ namespace SYSTEMUPGRADEPF.Classes
 "@ReversingTransactionId", 2,
 "@SourceType", "1",
 "@SourceId", 1,
-"@Arrears", 0,
+"@Arrears", this.PrincipalBalanceValue ,
 "@PrincipalBalance", this.PrincipalBalanceValue    ,
-"@InterestBalance", 0,
+"@InterestBalance", this.InterestBalance  ,
 "@PenaltyBalance", 0,
 "@DefaultCurrencyId", this.DefaultCurrencyId,
 "@ForeignCurrencyId", this.ForeignCurrencyId,
@@ -359,7 +419,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         "@DocumentNo", this.DocumentNo,
                         "@ModeOfPaymentId", this.ModeOfPaymentId,
                         "@Principal", this.Principal,
-                        "@Interest", 0,
+                        "@Interest", this.Interest ,
                         "@Penalty", 0,
                         "@PaidByName", this.PaidByName,
                         "@DebitGL", this.DebitGL,
@@ -373,7 +433,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         "@SourceId", this.SourceId ,
                         "@Arrears", 0,
                         "@PrincipalBalance", this.PrincipalBalanceValue,
-                        "@InterestBalance", 0,
+                        "@InterestBalance", this.InterestBalance ,
                         "@PenaltyBalance", 0,
                         "@DefaultCurrencyId", this.DefaultCurrencyId,
                         "@ForeignCurrencyId", this.ForeignCurrencyId,
@@ -402,7 +462,7 @@ namespace SYSTEMUPGRADEPF.Classes
             return id;
 
         }
-
+      
 
     }
 }

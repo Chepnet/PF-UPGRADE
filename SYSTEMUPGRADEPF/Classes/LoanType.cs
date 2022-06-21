@@ -11,7 +11,6 @@ namespace SYSTEMUPGRADEPF.Classes
 {
     class LoanType
     {
-        //private int _loanTypeId = 0;
         private int _productId = 0;
         private string _loanTypeCode = "";
         private string _loanTypeName = "";
@@ -21,12 +20,13 @@ namespace SYSTEMUPGRADEPF.Classes
         private int _dailyRateSpecification = 0;
         private bool _penaltyIsRate = false;
         private double _penaltyValue = 0;
-        private int _penaltyBalanceCalculationOption = 0;
+        private int _penaltyCalculationOption = 0;
         private int _penaltyPostingMethod = 0;
+        private int _penaltyAccrualFrequency = 0;
         private int _thresholdDays = 0;
-        private double _penaltyMinLoanBalance = 0;
+        private double _penaltyMinAmount = 0;
         private bool _applyPenaltyAfterMaturity = false;
-        private int _penaltyFrequencyCalculationOption = 0;
+        private int _penaltyFrequencyCalculation = 0;
         private bool _consinderInduplum = false;
         private bool _adjustableInterestRate = false;
         private bool _chargeFutureInterest = false;
@@ -58,7 +58,7 @@ namespace SYSTEMUPGRADEPF.Classes
         private int _penaltyReceivableGl = 0;
         private int _gracePeriod = 0;
         private string _remarks = "";
-        private bool _changeInterestDuringGracePeriod = false;
+        private bool _chargeInterestDuringGracePeriod = false;
         private bool _isActive = false;
         private bool _changeInterestIfClearingLoan = false;
         private bool _memberCanGuaranteeOwnLoan = false;
@@ -69,18 +69,14 @@ namespace SYSTEMUPGRADEPF.Classes
         private int _principalRoundingValue = 0;
         private double _interestRoundingNearest = 0;
         private int _interestRoundingValue = 0;
-
-        private string _loanGlCodeAc = "";
-        private string _interestGlCodeAc = "";
-        private string _penaltyGlCodeAc = "";
-        private string _writeOffGlCodeAc = "";
-        private string _interestReceivableGLAc = "";
-        private string _penaltyreceivableGlCodeAc = "";
-        private string _productname = "";
-        private string _repaymentname = "";
-
-
-        //public int LoanTypeId { get { return _loanTypeId; } set { _loanTypeId = value; } }
+        private string _paymentname = "";
+        private string _productdescription = "";
+        private string _loanGLCodeAc = "";
+        private string _interestGLcodeAc = "";
+        private string _penaltyGLcodeAc = "";
+        private string _writtoofGLcodeAc = "";
+        private string _interestreceivableG = "";
+        private string _penaltyGlcodeAc = "";
         public int ProductId { get { return _productId; } set { _productId = value; } }
         public string LoanTypeCode { get { return _loanTypeCode; } set { _loanTypeCode = value; } }
         public string LoanTypeName { get { return _loanTypeName; } set { _loanTypeName = value; } }
@@ -90,12 +86,13 @@ namespace SYSTEMUPGRADEPF.Classes
         public int DailyRateSpecification { get { return _dailyRateSpecification; } set { _dailyRateSpecification = value; } }
         public bool PenaltyIsRate { get { return _penaltyIsRate; } set { _penaltyIsRate = value; } }
         public double PenaltyValue { get { return _penaltyValue; } set { _penaltyValue = value; } }
-        public int PenaltyBalanceCalculationOption { get { return _penaltyBalanceCalculationOption; } set { _penaltyBalanceCalculationOption = value; } }
+        public int PenaltyCalculationOption { get { return _penaltyCalculationOption; } set { _penaltyCalculationOption = value; } }
         public int PenaltyPostingMethod { get { return _penaltyPostingMethod; } set { _penaltyPostingMethod = value; } }
+        public int PenaltyAccrualFrequency { get { return _penaltyAccrualFrequency; } set { _penaltyAccrualFrequency = value; } }
         public int ThresholdDays { get { return _thresholdDays; } set { _thresholdDays = value; } }
-        public double PenaltyMinLoanBalance { get { return _penaltyMinLoanBalance; } set { _penaltyMinLoanBalance = value; } }
+        public double PenaltyMinAmount { get { return _penaltyMinAmount; } set { _penaltyMinAmount = value; } }
         public bool ApplyPenaltyAfterMaturity { get { return _applyPenaltyAfterMaturity; } set { _applyPenaltyAfterMaturity = value; } }
-        public int PenaltyFrequencyCalculationOption { get { return _penaltyFrequencyCalculationOption; } set { _penaltyFrequencyCalculationOption = value; } }
+        public int PenaltyFrequencyCalculation { get { return _penaltyFrequencyCalculation; } set { _penaltyFrequencyCalculation = value; } }
         public bool ConsinderInduplum { get { return _consinderInduplum; } set { _consinderInduplum = value; } }
         public bool AdjustableInterestRate { get { return _adjustableInterestRate; } set { _adjustableInterestRate = value; } }
         public bool ChargeFutureInterest { get { return _chargeFutureInterest; } set { _chargeFutureInterest = value; } }
@@ -127,7 +124,7 @@ namespace SYSTEMUPGRADEPF.Classes
         public int PenaltyReceivableGl { get { return _penaltyReceivableGl; } set { _penaltyReceivableGl = value; } }
         public int GracePeriod { get { return _gracePeriod; } set { _gracePeriod = value; } }
         public string Remarks { get { return _remarks; } set { _remarks = value; } }
-        public bool ChangeInterestDuringGracePeriod { get { return _changeInterestDuringGracePeriod; } set { _changeInterestDuringGracePeriod = value; } }
+        public bool ChargeInterestDuringGracePeriod { get { return _chargeInterestDuringGracePeriod; } set { _chargeInterestDuringGracePeriod = value; } }
         public bool IsActive { get { return _isActive; } set { _isActive = value; } }
         public bool ChangeInterestIfClearingLoan { get { return _changeInterestIfClearingLoan; } set { _changeInterestIfClearingLoan = value; } }
         public bool MemberCanGuaranteeOwnLoan { get { return _memberCanGuaranteeOwnLoan; } set { _memberCanGuaranteeOwnLoan = value; } }
@@ -139,15 +136,13 @@ namespace SYSTEMUPGRADEPF.Classes
         public double InterestRoundingNearest { get { return _interestRoundingNearest; } set { _interestRoundingNearest = value; } }
         public int InterestRoundingValue { get { return _interestRoundingValue; } set { _interestRoundingValue = value; } }
 
-        public string LoanGlCodeAc { get { return _loanGlCodeAc; } set { _loanGlCodeAc = value; } }
-        public string InterestGlCodeAc { get { return _interestGlCodeAc; } set { _interestGlCodeAc = value; } }
-        public string PenaltyGlCodeAc { get { return _penaltyGlCodeAc; } set { _penaltyGlCodeAc = value; } }
-        public string WriteOffGlCodeAc { get { return _writeOffGlCodeAc; } set { _writeOffGlCodeAc = value; } }
-        public string  InterestReceivableGLAc { get { return _interestReceivableGLAc; } set { _interestReceivableGLAc = value; } }
-        public string  PenaltyReceivableGlAc { get { return _penaltyreceivableGlCodeAc; } set { _penaltyreceivableGlCodeAc = value; } }
-        public string ProductDescription { get { return _productname; } set { _productname = value; } }
-        public string RepaymentName { get { return _repaymentname ; } set { _repaymentname  = value; } }
-
+        public string PaymentName { get { return _paymentname ; } set { _paymentname = value; } }
+        public string ProductDescription { get { return _productdescription ; } set { _productdescription = value; } }
+        public string LoanGlCodeAc { get { return _loanGLCodeAc ; } set { _loanGLCodeAc = value; } }
+        public string InterestGLCodeAC { get { return _interestGLcodeAc ; } set { _interestGLcodeAc = value; } }
+        public string PenaltyGlCodeAc { get { return _penaltyGlcodeAc ; } set { _penaltyGlcodeAc = value; } }
+        public string WrittOfGlCodeAc { get { return _writtoofGLcodeAc  ; } set { _writtoofGLcodeAc = value; } }
+        public string InterestReceivableGlAc { get { return _interestreceivableG ; } set { _interestreceivableG = value; } }
         Product oProduct = new Product();
 
         RepaymentPeriod oRepaymentPeriod = new RepaymentPeriod();
@@ -330,7 +325,7 @@ namespace SYSTEMUPGRADEPF.Classes
             get
             {
                 string name = "";
-                switch (this.PenaltyFrequencyCalculationOption )
+                switch (this.PenaltyFrequencyCalculation  )
                 {
                     case 0:
                         name = "  No of Days in a Month";
@@ -365,7 +360,6 @@ namespace SYSTEMUPGRADEPF.Classes
                 {
 
                     LoanType obj = new Classes.LoanType();
-                    //if (!String.IsNullOrEmpty(rd["LoanTypeId"].ToString())) obj.LoanTypeId = int.Parse(rd["LoanTypeId"].ToString());
                     if (!String.IsNullOrEmpty(rd["ProductId"].ToString())) obj.ProductId = int.Parse(rd["ProductId"].ToString());
                     if (!String.IsNullOrEmpty(rd["LoanTypeCode"].ToString())) obj.LoanTypeCode = rd["LoanTypeCode"].ToString();
                     if (!String.IsNullOrEmpty(rd["LoanTypeName"].ToString())) obj.LoanTypeName = rd["LoanTypeName"].ToString();
@@ -375,12 +369,13 @@ namespace SYSTEMUPGRADEPF.Classes
                     if (!String.IsNullOrEmpty(rd["DailyRateSpecification"].ToString())) obj.DailyRateSpecification = int.Parse(rd["DailyRateSpecification"].ToString());
                     if (!String.IsNullOrEmpty(rd["PenaltyIsRate"].ToString())) obj.PenaltyIsRate = bool.Parse(rd["PenaltyIsRate"].ToString());
                     if (!String.IsNullOrEmpty(rd["PenaltyValue"].ToString())) obj.PenaltyValue = double.Parse(rd["PenaltyValue"].ToString());
-                    if (!String.IsNullOrEmpty(rd["PenaltyBalanceCalculationOption"].ToString())) obj.PenaltyBalanceCalculationOption = int.Parse(rd["PenaltyBalanceCalculationOption"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyCalculationOption"].ToString())) obj.PenaltyCalculationOption = int.Parse(rd["PenaltyCalculationOption"].ToString());
                     if (!String.IsNullOrEmpty(rd["PenaltyPostingMethod"].ToString())) obj.PenaltyPostingMethod = int.Parse(rd["PenaltyPostingMethod"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyAccrualFrequency"].ToString())) obj.PenaltyAccrualFrequency = int.Parse(rd["PenaltyAccrualFrequency"].ToString());
                     if (!String.IsNullOrEmpty(rd["ThresholdDays"].ToString())) obj.ThresholdDays = int.Parse(rd["ThresholdDays"].ToString());
-                    if (!String.IsNullOrEmpty(rd["PenaltyMinLoanBalance"].ToString())) obj.PenaltyMinLoanBalance = double.Parse(rd["PenaltyMinLoanBalance"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyMinAmount"].ToString())) obj.PenaltyMinAmount = double.Parse(rd["PenaltyMinAmount"].ToString());
                     if (!String.IsNullOrEmpty(rd["ApplyPenaltyAfterMaturity"].ToString())) obj.ApplyPenaltyAfterMaturity = bool.Parse(rd["ApplyPenaltyAfterMaturity"].ToString());
-                    if (!String.IsNullOrEmpty(rd["PenaltyFrequencyCalculationOption"].ToString())) obj.PenaltyFrequencyCalculationOption = int.Parse(rd["PenaltyFrequencyCalculationOption"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyFrequencyCalculation"].ToString())) obj.PenaltyFrequencyCalculation = int.Parse(rd["PenaltyFrequencyCalculation"].ToString());
                     if (!String.IsNullOrEmpty(rd["ConsinderInduplum"].ToString())) obj.ConsinderInduplum = bool.Parse(rd["ConsinderInduplum"].ToString());
                     if (!String.IsNullOrEmpty(rd["AdjustableInterestRate"].ToString())) obj.AdjustableInterestRate = bool.Parse(rd["AdjustableInterestRate"].ToString());
                     if (!String.IsNullOrEmpty(rd["ChargeFutureInterest"].ToString())) obj.ChargeFutureInterest = bool.Parse(rd["ChargeFutureInterest"].ToString());
@@ -412,7 +407,7 @@ namespace SYSTEMUPGRADEPF.Classes
                     if (!String.IsNullOrEmpty(rd["PenaltyReceivableGl"].ToString())) obj.PenaltyReceivableGl = int.Parse(rd["PenaltyReceivableGl"].ToString());
                     if (!String.IsNullOrEmpty(rd["GracePeriod"].ToString())) obj.GracePeriod = int.Parse(rd["GracePeriod"].ToString());
                     if (!String.IsNullOrEmpty(rd["Remarks"].ToString())) obj.Remarks = rd["Remarks"].ToString();
-                    if (!String.IsNullOrEmpty(rd["ChangeInterestDuringGracePeriod"].ToString())) obj.ChangeInterestDuringGracePeriod = bool.Parse(rd["ChangeInterestDuringGracePeriod"].ToString());
+                    if (!String.IsNullOrEmpty(rd["ChargeInterestDuringGracePeriod"].ToString())) obj.ChargeInterestDuringGracePeriod = bool.Parse(rd["ChargeInterestDuringGracePeriod"].ToString());
                     if (!String.IsNullOrEmpty(rd["IsActive"].ToString())) obj.IsActive = bool.Parse(rd["IsActive"].ToString());
                     if (!String.IsNullOrEmpty(rd["ChangeInterestIfClearingLoan"].ToString())) obj.ChangeInterestIfClearingLoan = bool.Parse(rd["ChangeInterestIfClearingLoan"].ToString());
                     if (!String.IsNullOrEmpty(rd["MemberCanGuaranteeOwnLoan"].ToString())) obj.MemberCanGuaranteeOwnLoan = bool.Parse(rd["MemberCanGuaranteeOwnLoan"].ToString());
@@ -429,7 +424,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         RepaymentPeriod myPeriod = oRepaymentPeriod.GetRepaymentPeriod(obj.RepaymentFrequency);
                         if(myPeriod !=null)
                         {
-                            obj.RepaymentName = myPeriod.Name;
+                            obj.PaymentName  = myPeriod.Name;
                         }
                     }
                     if (obj.ProductId > 0)
@@ -453,7 +448,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         ChartOfAccount myChartOfAccount = oChartOfAccount.GetChartOfAccount(obj.InterestGlCode);
                         if (myChartOfAccount != null)
                         {
-                            obj.InterestGlCodeAc = myChartOfAccount.AccountName;
+                            obj.InterestGLCodeAC  = myChartOfAccount.AccountName;
                         }
                     }
                     if (obj.PenaltyGlCode > 0)
@@ -469,7 +464,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         ChartOfAccount myChartOfAccount = oChartOfAccount.GetChartOfAccount(obj.WriteOffGlCode);
                         if (myChartOfAccount != null)
                         {
-                            obj.WriteOffGlCodeAc = myChartOfAccount.AccountName;
+                            obj.WrittOfGlCodeAc  = myChartOfAccount.AccountName;
                         }
                     }
                     if (obj.InterestReceivableGL > 0)
@@ -477,7 +472,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         ChartOfAccount myChartOfAccount = oChartOfAccount.GetChartOfAccount(obj.InterestReceivableGL);
                         if (myChartOfAccount != null)
                         {
-                            obj.InterestReceivableGLAc = myChartOfAccount.AccountName;
+                            obj.InterestReceivableGlAc  = myChartOfAccount.AccountName;
                         }
                     }
                     if (obj.PenaltyGlCode > 0)
@@ -512,7 +507,6 @@ namespace SYSTEMUPGRADEPF.Classes
                 if (rd.Read())
                 {
                     obj = new Classes.LoanType();
-                    //if (!String.IsNullOrEmpty(rd["LoanTypeId"].ToString())) obj.LoanTypeId = int.Parse(rd["LoanTypeId"].ToString());
                     if (!String.IsNullOrEmpty(rd["ProductId"].ToString())) obj.ProductId = int.Parse(rd["ProductId"].ToString());
                     if (!String.IsNullOrEmpty(rd["LoanTypeCode"].ToString())) obj.LoanTypeCode = rd["LoanTypeCode"].ToString();
                     if (!String.IsNullOrEmpty(rd["LoanTypeName"].ToString())) obj.LoanTypeName = rd["LoanTypeName"].ToString();
@@ -522,12 +516,13 @@ namespace SYSTEMUPGRADEPF.Classes
                     if (!String.IsNullOrEmpty(rd["DailyRateSpecification"].ToString())) obj.DailyRateSpecification = int.Parse(rd["DailyRateSpecification"].ToString());
                     if (!String.IsNullOrEmpty(rd["PenaltyIsRate"].ToString())) obj.PenaltyIsRate = bool.Parse(rd["PenaltyIsRate"].ToString());
                     if (!String.IsNullOrEmpty(rd["PenaltyValue"].ToString())) obj.PenaltyValue = double.Parse(rd["PenaltyValue"].ToString());
-                    if (!String.IsNullOrEmpty(rd["PenaltyBalanceCalculationOption"].ToString())) obj.PenaltyBalanceCalculationOption = int.Parse(rd["PenaltyBalanceCalculationOption"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyCalculationOption"].ToString())) obj.PenaltyCalculationOption = int.Parse(rd["PenaltyCalculationOption"].ToString());
                     if (!String.IsNullOrEmpty(rd["PenaltyPostingMethod"].ToString())) obj.PenaltyPostingMethod = int.Parse(rd["PenaltyPostingMethod"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyAccrualFrequency"].ToString())) obj.PenaltyAccrualFrequency = int.Parse(rd["PenaltyAccrualFrequency"].ToString());
                     if (!String.IsNullOrEmpty(rd["ThresholdDays"].ToString())) obj.ThresholdDays = int.Parse(rd["ThresholdDays"].ToString());
-                    if (!String.IsNullOrEmpty(rd["PenaltyMinLoanBalance"].ToString())) obj.PenaltyMinLoanBalance = double.Parse(rd["PenaltyMinLoanBalance"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyMinAmount"].ToString())) obj.PenaltyMinAmount = double.Parse(rd["PenaltyMinAmount"].ToString());
                     if (!String.IsNullOrEmpty(rd["ApplyPenaltyAfterMaturity"].ToString())) obj.ApplyPenaltyAfterMaturity = bool.Parse(rd["ApplyPenaltyAfterMaturity"].ToString());
-                    if (!String.IsNullOrEmpty(rd["PenaltyFrequencyCalculationOption"].ToString())) obj.PenaltyFrequencyCalculationOption = int.Parse(rd["PenaltyFrequencyCalculationOption"].ToString());
+                    if (!String.IsNullOrEmpty(rd["PenaltyFrequencyCalculation"].ToString())) obj.PenaltyFrequencyCalculation = int.Parse(rd["PenaltyFrequencyCalculation"].ToString());
                     if (!String.IsNullOrEmpty(rd["ConsinderInduplum"].ToString())) obj.ConsinderInduplum = bool.Parse(rd["ConsinderInduplum"].ToString());
                     if (!String.IsNullOrEmpty(rd["AdjustableInterestRate"].ToString())) obj.AdjustableInterestRate = bool.Parse(rd["AdjustableInterestRate"].ToString());
                     if (!String.IsNullOrEmpty(rd["ChargeFutureInterest"].ToString())) obj.ChargeFutureInterest = bool.Parse(rd["ChargeFutureInterest"].ToString());
@@ -559,7 +554,7 @@ namespace SYSTEMUPGRADEPF.Classes
                     if (!String.IsNullOrEmpty(rd["PenaltyReceivableGl"].ToString())) obj.PenaltyReceivableGl = int.Parse(rd["PenaltyReceivableGl"].ToString());
                     if (!String.IsNullOrEmpty(rd["GracePeriod"].ToString())) obj.GracePeriod = int.Parse(rd["GracePeriod"].ToString());
                     if (!String.IsNullOrEmpty(rd["Remarks"].ToString())) obj.Remarks = rd["Remarks"].ToString();
-                    if (!String.IsNullOrEmpty(rd["ChangeInterestDuringGracePeriod"].ToString())) obj.ChangeInterestDuringGracePeriod = bool.Parse(rd["ChangeInterestDuringGracePeriod"].ToString());
+                    if (!String.IsNullOrEmpty(rd["ChargeInterestDuringGracePeriod"].ToString())) obj.ChargeInterestDuringGracePeriod = bool.Parse(rd["ChargeInterestDuringGracePeriod"].ToString());
                     if (!String.IsNullOrEmpty(rd["IsActive"].ToString())) obj.IsActive = bool.Parse(rd["IsActive"].ToString());
                     if (!String.IsNullOrEmpty(rd["ChangeInterestIfClearingLoan"].ToString())) obj.ChangeInterestIfClearingLoan = bool.Parse(rd["ChangeInterestIfClearingLoan"].ToString());
                     if (!String.IsNullOrEmpty(rd["MemberCanGuaranteeOwnLoan"].ToString())) obj.MemberCanGuaranteeOwnLoan = bool.Parse(rd["MemberCanGuaranteeOwnLoan"].ToString());
@@ -569,14 +564,13 @@ namespace SYSTEMUPGRADEPF.Classes
                     if (!String.IsNullOrEmpty(rd["PrincipalRoundingNearest"].ToString())) obj.PrincipalRoundingNearest = double.Parse(rd["PrincipalRoundingNearest"].ToString());
                     if (!String.IsNullOrEmpty(rd["PrincipalRoundingValue"].ToString())) obj.PrincipalRoundingValue = int.Parse(rd["PrincipalRoundingValue"].ToString());
                     if (!String.IsNullOrEmpty(rd["InterestRoundingNearest"].ToString())) obj.InterestRoundingNearest = double.Parse(rd["InterestRoundingNearest"].ToString());
-                    if (!String.IsNullOrEmpty(rd["InterestRoundingValue"].ToString())) obj.InterestRoundingValue = int.Parse(rd["InterestRoundingValue"].ToString());
-
+                  
                     if (obj.RepaymentFrequency > 0)
                     {
                         RepaymentPeriod myPeriod = oRepaymentPeriod.GetRepaymentPeriod(obj.RepaymentFrequency);
                         if (myPeriod != null)
                         {
-                            obj.RepaymentName = myPeriod.Name;
+                            obj.PaymentName  = myPeriod.Name;
                         }
                     }
                     if (obj.ProductId > 0)
@@ -600,7 +594,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         ChartOfAccount myChartOfAccount = oChartOfAccount.GetChartOfAccount(obj.InterestGlCode);
                         if (myChartOfAccount != null)
                         {
-                            obj.InterestGlCodeAc = myChartOfAccount.AccountName;
+                            obj.InterestGLCodeAC  = myChartOfAccount.AccountName;
                         }
                     }
                     if (obj.PenaltyGlCode > 0)
@@ -616,7 +610,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         ChartOfAccount myChartOfAccount = oChartOfAccount.GetChartOfAccount(obj.WriteOffGlCode);
                         if (myChartOfAccount != null)
                         {
-                            obj.WriteOffGlCodeAc = myChartOfAccount.AccountName;
+                            obj.WrittOfGlCodeAc   = myChartOfAccount.AccountName;
                         }
                     }
                     if (obj.InterestReceivableGL > 0)
@@ -624,7 +618,7 @@ namespace SYSTEMUPGRADEPF.Classes
                         ChartOfAccount myChartOfAccount = oChartOfAccount.GetChartOfAccount(obj.InterestReceivableGL);
                         if (myChartOfAccount != null)
                         {
-                            obj.InterestReceivableGLAc = myChartOfAccount.AccountName;
+                            obj.InterestReceivableGlAc  = myChartOfAccount.AccountName;
                         }
                     }
                     if (obj.PenaltyGlCode > 0)
@@ -663,12 +657,13 @@ namespace SYSTEMUPGRADEPF.Classes
                     "@DailyRateSpecification", this.DailyRateSpecification,
                     "@PenaltyIsRate", this.PenaltyIsRate,
                     "@PenaltyValue", this.PenaltyValue,
-                    "@PenaltyBalanceCalculationOption", this.PenaltyBalanceCalculationOption,
+                    "@PenaltyBalanceCalculationOption", this.PenaltyCalculationOption ,
                     "@PenaltyPostingMethod", this.PenaltyPostingMethod,
+                    "@PenaltyAccrualFrequency", this.PenaltyAccrualFrequency ,
                     "@ThresholdDays", this.ThresholdDays,
-                    "@PenaltyMinLoanBalance", this.PenaltyMinLoanBalance,
+                    "@PenaltyMinLoanBalance", this.PenaltyMinAmount ,
                     "@ApplyPenaltyAfterMaturity", this.ApplyPenaltyAfterMaturity,
-                    "@PenaltyFrequencyCalculationOption", this.PenaltyFrequencyCalculationOption,
+                    "@PenaltyFrequencyCalculationOption", this.PenaltyFrequencyCalculation ,
                     "@ConsinderInduplum", this.ConsinderInduplum,
                     "@AdjustableInterestRate", this.AdjustableInterestRate,
                     "@ChargeFutureInterest", this.ChargeFutureInterest,
@@ -703,7 +698,7 @@ namespace SYSTEMUPGRADEPF.Classes
                     "@MemberCanGuaranteeOwnLoan", this.MemberCanGuaranteeOwnLoan,
                     "@MustBeFullySecured", this.MustBeFullySecured,
                     "@AllowUseOfZeroOrLessFreeShares", this.AllowUseOfZeroOrLessFreeShares,
-                    "@ChangeInterestDuringGracePeriod", this.ChangeInterestDuringGracePeriod,
+                    "@ChangeInterestDuringGracePeriod", this.ChargeInterestDuringGracePeriod,
                     "@IsActive", this.IsActive,
                     "@ChangeInterestIfClearingLoan", this.ChangeInterestIfClearingLoan,
                     "@AllowPartialDisbursement", this.AllowPartialDisbursement,

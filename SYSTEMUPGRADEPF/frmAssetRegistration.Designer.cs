@@ -30,8 +30,14 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAssetRegistration));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripPrevious = new System.Windows.Forms.ToolStripButton();
+            this.toolStripNext = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbdepreciationmethod = new System.Windows.Forms.ComboBox();
             this.txtRemarks = new System.Windows.Forms.TextBox();
@@ -45,8 +51,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
+            this.btnCategory = new System.Windows.Forms.Button();
+            this.btnSubcategory = new System.Windows.Forms.Button();
+            this.btnBank = new System.Windows.Forms.Button();
             this.txtGL = new System.Windows.Forms.TextBox();
             this.txtBank = new System.Windows.Forms.TextBox();
+            this.btnCreditOfficer = new System.Windows.Forms.Button();
             this.txtCreditOfficer = new System.Windows.Forms.TextBox();
             this.txtSerialNo = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -59,16 +69,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnCategory = new System.Windows.Forms.Button();
-            this.btnSubcategory = new System.Windows.Forms.Button();
-            this.btnBank = new System.Windows.Forms.Button();
-            this.btnCreditOfficer = new System.Windows.Forms.Button();
-            this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripPrevious = new System.Windows.Forms.ToolStripButton();
-            this.toolStripNext = new System.Windows.Forms.ToolStripButton();
-            this.cutToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -93,15 +93,75 @@
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // newToolStripButton
+            // 
+            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
+            this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.newToolStripButton.Name = "newToolStripButton";
+            this.newToolStripButton.Size = new System.Drawing.Size(28, 28);
+            this.newToolStripButton.Text = "&New";
+            this.newToolStripButton.Click += new System.EventHandler(this.newToolStripButton_Click);
+            // 
+            // openToolStripButton
+            // 
+            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
+            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openToolStripButton.Name = "openToolStripButton";
+            this.openToolStripButton.Size = new System.Drawing.Size(28, 28);
+            this.openToolStripButton.Text = "&Open";
+            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
+            // 
+            // saveToolStripButton
+            // 
+            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
+            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.saveToolStripButton.Name = "saveToolStripButton";
+            this.saveToolStripButton.Size = new System.Drawing.Size(28, 28);
+            this.saveToolStripButton.Text = "&Save";
+            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
             // 
+            // toolStripPrevious
+            // 
+            this.toolStripPrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripPrevious.Image = ((System.Drawing.Image)(resources.GetObject("toolStripPrevious.Image")));
+            this.toolStripPrevious.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripPrevious.Name = "toolStripPrevious";
+            this.toolStripPrevious.Size = new System.Drawing.Size(28, 28);
+            this.toolStripPrevious.Text = "Previous";
+            this.toolStripPrevious.Click += new System.EventHandler(this.toolStripPrevious_Click);
+            // 
+            // toolStripNext
+            // 
+            this.toolStripNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripNext.Image = ((System.Drawing.Image)(resources.GetObject("toolStripNext.Image")));
+            this.toolStripNext.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripNext.Name = "toolStripNext";
+            this.toolStripNext.Size = new System.Drawing.Size(28, 28);
+            this.toolStripNext.Text = "Next";
+            this.toolStripNext.Click += new System.EventHandler(this.toolStripNext_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
+            // cutToolStripButton
+            // 
+            this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.cutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripButton.Image")));
+            this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.cutToolStripButton.Name = "cutToolStripButton";
+            this.cutToolStripButton.Size = new System.Drawing.Size(28, 28);
+            this.cutToolStripButton.Text = "Delete";
+            this.cutToolStripButton.Click += new System.EventHandler(this.cutToolStripButton_Click);
             // 
             // panel1
             // 
@@ -144,6 +204,7 @@
             // dtpDepEndDate
             // 
             this.dtpDepEndDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtpDepEndDate.Enabled = false;
             this.dtpDepEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDepEndDate.Location = new System.Drawing.Point(205, 219);
             this.dtpDepEndDate.Name = "dtpDepEndDate";
@@ -153,6 +214,7 @@
             // dtpDepStart
             // 
             this.dtpDepStart.CustomFormat = "dd-MMM-yyyy";
+            this.dtpDepStart.Enabled = false;
             this.dtpDepStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDepStart.Location = new System.Drawing.Point(205, 95);
             this.dtpDepStart.Name = "dtpDepStart";
@@ -165,6 +227,7 @@
             this.txtYears.Name = "txtYears";
             this.txtYears.Size = new System.Drawing.Size(169, 26);
             this.txtYears.TabIndex = 68;
+            this.txtYears.TextChanged += new System.EventHandler(this.txtYears_TextChanged);
             // 
             // label9
             // 
@@ -249,6 +312,48 @@
             this.chkIsActive.Text = "Is Active";
             this.chkIsActive.UseVisualStyleBackColor = true;
             // 
+            // btnCategory
+            // 
+            this.btnCategory.FlatAppearance.BorderSize = 0;
+            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
+            this.btnCategory.Location = new System.Drawing.Point(402, 33);
+            this.btnCategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCategory.Name = "btnCategory";
+            this.btnCategory.Size = new System.Drawing.Size(30, 31);
+            this.btnCategory.TabIndex = 78;
+            this.btnCategory.Text = "...";
+            this.btnCategory.UseVisualStyleBackColor = true;
+            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
+            // 
+            // btnSubcategory
+            // 
+            this.btnSubcategory.FlatAppearance.BorderSize = 0;
+            this.btnSubcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubcategory.Image = ((System.Drawing.Image)(resources.GetObject("btnSubcategory.Image")));
+            this.btnSubcategory.Location = new System.Drawing.Point(402, 94);
+            this.btnSubcategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnSubcategory.Name = "btnSubcategory";
+            this.btnSubcategory.Size = new System.Drawing.Size(30, 31);
+            this.btnSubcategory.TabIndex = 77;
+            this.btnSubcategory.Text = "...";
+            this.btnSubcategory.UseVisualStyleBackColor = true;
+            this.btnSubcategory.Click += new System.EventHandler(this.btnSubcategory_Click);
+            // 
+            // btnBank
+            // 
+            this.btnBank.FlatAppearance.BorderSize = 0;
+            this.btnBank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBank.Image = ((System.Drawing.Image)(resources.GetObject("btnBank.Image")));
+            this.btnBank.Location = new System.Drawing.Point(402, 371);
+            this.btnBank.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBank.Name = "btnBank";
+            this.btnBank.Size = new System.Drawing.Size(30, 31);
+            this.btnBank.TabIndex = 76;
+            this.btnBank.Text = "...";
+            this.btnBank.UseVisualStyleBackColor = true;
+            this.btnBank.Click += new System.EventHandler(this.btnBank_Click);
+            // 
             // txtGL
             // 
             this.txtGL.Location = new System.Drawing.Point(144, 423);
@@ -262,6 +367,19 @@
             this.txtBank.Name = "txtBank";
             this.txtBank.Size = new System.Drawing.Size(236, 26);
             this.txtBank.TabIndex = 75;
+            // 
+            // btnCreditOfficer
+            // 
+            this.btnCreditOfficer.FlatAppearance.BorderSize = 0;
+            this.btnCreditOfficer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCreditOfficer.Image = ((System.Drawing.Image)(resources.GetObject("btnCreditOfficer.Image")));
+            this.btnCreditOfficer.Location = new System.Drawing.Point(402, 282);
+            this.btnCreditOfficer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCreditOfficer.Name = "btnCreditOfficer";
+            this.btnCreditOfficer.Size = new System.Drawing.Size(30, 31);
+            this.btnCreditOfficer.TabIndex = 76;
+            this.btnCreditOfficer.Text = "...";
+            this.btnCreditOfficer.UseVisualStyleBackColor = true;
             // 
             // txtCreditOfficer
             // 
@@ -361,121 +479,6 @@
             this.label1.TabIndex = 66;
             this.label1.Text = "Category:";
             // 
-            // btnCategory
-            // 
-            this.btnCategory.FlatAppearance.BorderSize = 0;
-            this.btnCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCategory.Image = ((System.Drawing.Image)(resources.GetObject("btnCategory.Image")));
-            this.btnCategory.Location = new System.Drawing.Point(402, 33);
-            this.btnCategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCategory.Name = "btnCategory";
-            this.btnCategory.Size = new System.Drawing.Size(30, 31);
-            this.btnCategory.TabIndex = 78;
-            this.btnCategory.Text = "...";
-            this.btnCategory.UseVisualStyleBackColor = true;
-            this.btnCategory.Click += new System.EventHandler(this.btnCategory_Click);
-            // 
-            // btnSubcategory
-            // 
-            this.btnSubcategory.FlatAppearance.BorderSize = 0;
-            this.btnSubcategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubcategory.Image = ((System.Drawing.Image)(resources.GetObject("btnSubcategory.Image")));
-            this.btnSubcategory.Location = new System.Drawing.Point(402, 94);
-            this.btnSubcategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnSubcategory.Name = "btnSubcategory";
-            this.btnSubcategory.Size = new System.Drawing.Size(30, 31);
-            this.btnSubcategory.TabIndex = 77;
-            this.btnSubcategory.Text = "...";
-            this.btnSubcategory.UseVisualStyleBackColor = true;
-            this.btnSubcategory.Click += new System.EventHandler(this.btnSubcategory_Click);
-            // 
-            // btnBank
-            // 
-            this.btnBank.FlatAppearance.BorderSize = 0;
-            this.btnBank.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBank.Image = ((System.Drawing.Image)(resources.GetObject("btnBank.Image")));
-            this.btnBank.Location = new System.Drawing.Point(402, 371);
-            this.btnBank.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnBank.Name = "btnBank";
-            this.btnBank.Size = new System.Drawing.Size(30, 31);
-            this.btnBank.TabIndex = 76;
-            this.btnBank.Text = "...";
-            this.btnBank.UseVisualStyleBackColor = true;
-            this.btnBank.Click += new System.EventHandler(this.btnBank_Click);
-            // 
-            // btnCreditOfficer
-            // 
-            this.btnCreditOfficer.FlatAppearance.BorderSize = 0;
-            this.btnCreditOfficer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCreditOfficer.Image = ((System.Drawing.Image)(resources.GetObject("btnCreditOfficer.Image")));
-            this.btnCreditOfficer.Location = new System.Drawing.Point(402, 282);
-            this.btnCreditOfficer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCreditOfficer.Name = "btnCreditOfficer";
-            this.btnCreditOfficer.Size = new System.Drawing.Size(30, 31);
-            this.btnCreditOfficer.TabIndex = 76;
-            this.btnCreditOfficer.Text = "...";
-            this.btnCreditOfficer.UseVisualStyleBackColor = true;
-            // 
-            // newToolStripButton
-            // 
-            this.newToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.newToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("newToolStripButton.Image")));
-            this.newToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.newToolStripButton.Name = "newToolStripButton";
-            this.newToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.newToolStripButton.Text = "&New";
-            this.newToolStripButton.Click += new System.EventHandler(this.newToolStripButton_Click);
-            // 
-            // openToolStripButton
-            // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
-            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.openToolStripButton.Text = "&Open";
-            this.openToolStripButton.Click += new System.EventHandler(this.openToolStripButton_Click);
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.saveToolStripButton.Text = "&Save";
-            this.saveToolStripButton.Click += new System.EventHandler(this.saveToolStripButton_Click);
-            // 
-            // toolStripPrevious
-            // 
-            this.toolStripPrevious.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripPrevious.Image = ((System.Drawing.Image)(resources.GetObject("toolStripPrevious.Image")));
-            this.toolStripPrevious.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripPrevious.Name = "toolStripPrevious";
-            this.toolStripPrevious.Size = new System.Drawing.Size(28, 28);
-            this.toolStripPrevious.Text = "Previous";
-            this.toolStripPrevious.Click += new System.EventHandler(this.toolStripPrevious_Click);
-            // 
-            // toolStripNext
-            // 
-            this.toolStripNext.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripNext.Image = ((System.Drawing.Image)(resources.GetObject("toolStripNext.Image")));
-            this.toolStripNext.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripNext.Name = "toolStripNext";
-            this.toolStripNext.Size = new System.Drawing.Size(28, 28);
-            this.toolStripNext.Text = "Next";
-            this.toolStripNext.Click += new System.EventHandler(this.toolStripNext_Click);
-            // 
-            // cutToolStripButton
-            // 
-            this.cutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.cutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("cutToolStripButton.Image")));
-            this.cutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.cutToolStripButton.Name = "cutToolStripButton";
-            this.cutToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.cutToolStripButton.Text = "Delete";
-            this.cutToolStripButton.Click += new System.EventHandler(this.cutToolStripButton_Click);
-            // 
             // frmAssetRegistration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -490,6 +493,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Asset  Registration";
+            this.Load += new System.EventHandler(this.frmAssetRegistration_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);

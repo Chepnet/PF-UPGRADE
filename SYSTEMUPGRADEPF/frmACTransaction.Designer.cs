@@ -59,6 +59,8 @@
             this.objMemberShare = new BrightIdeasSoftware.ObjectListView();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.txtCommision = new System.Windows.Forms.TextBox();
+            this.chkCommision = new System.Windows.Forms.CheckBox();
             this.cmbCurrency = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtPaidBy = new System.Windows.Forms.TextBox();
@@ -90,8 +92,6 @@
             this.olvColumn9 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tblCurrenciesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.pcbphoto = new System.Windows.Forms.PictureBox();
-            this.chkCommision = new System.Windows.Forms.CheckBox();
-            this.txtCommision = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -450,6 +450,26 @@
             this.tabPage1.UseVisualStyleBackColor = true;
             this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
+            // txtCommision
+            // 
+            this.txtCommision.Enabled = false;
+            this.txtCommision.Location = new System.Drawing.Point(653, 210);
+            this.txtCommision.Name = "txtCommision";
+            this.txtCommision.Size = new System.Drawing.Size(67, 26);
+            this.txtCommision.TabIndex = 59;
+            this.txtCommision.TextChanged += new System.EventHandler(this.txtCommision_TextChanged);
+            // 
+            // chkCommision
+            // 
+            this.chkCommision.AutoSize = true;
+            this.chkCommision.Location = new System.Drawing.Point(526, 213);
+            this.chkCommision.Name = "chkCommision";
+            this.chkCommision.Size = new System.Drawing.Size(121, 24);
+            this.chkCommision.TabIndex = 58;
+            this.chkCommision.Text = "Commission";
+            this.chkCommision.UseVisualStyleBackColor = true;
+            this.chkCommision.CheckedChanged += new System.EventHandler(this.chkCommision_CheckedChanged);
+            // 
             // cmbCurrency
             // 
             this.cmbCurrency.FormattingEnabled = true;
@@ -615,6 +635,7 @@
             // dtPTransDate
             // 
             this.dtPTransDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtPTransDate.Enabled = false;
             this.dtPTransDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtPTransDate.Location = new System.Drawing.Point(155, 30);
             this.dtPTransDate.Name = "dtPTransDate";
@@ -654,7 +675,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1126, 242);
+            this.tabPage2.Size = new System.Drawing.Size(1126, 268);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Transactions";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -681,7 +702,7 @@
             this.objTransactions.Location = new System.Drawing.Point(3, 3);
             this.objTransactions.Name = "objTransactions";
             this.objTransactions.ShowGroups = false;
-            this.objTransactions.Size = new System.Drawing.Size(1120, 236);
+            this.objTransactions.Size = new System.Drawing.Size(1120, 262);
             this.objTransactions.TabIndex = 0;
             this.objTransactions.UseAlternatingBackColors = true;
             this.objTransactions.UseCompatibleStateImageBehavior = false;
@@ -734,25 +755,6 @@
             this.pcbphoto.TabIndex = 6;
             this.pcbphoto.TabStop = false;
             this.pcbphoto.WaitOnLoad = true;
-            // 
-            // chkCommision
-            // 
-            this.chkCommision.AutoSize = true;
-            this.chkCommision.Location = new System.Drawing.Point(526, 213);
-            this.chkCommision.Name = "chkCommision";
-            this.chkCommision.Size = new System.Drawing.Size(121, 24);
-            this.chkCommision.TabIndex = 58;
-            this.chkCommision.Text = "Commission";
-            this.chkCommision.UseVisualStyleBackColor = true;
-            this.chkCommision.CheckedChanged += new System.EventHandler(this.chkCommision_CheckedChanged);
-            // 
-            // txtCommision
-            // 
-            this.txtCommision.Enabled = false;
-            this.txtCommision.Location = new System.Drawing.Point(653, 210);
-            this.txtCommision.Name = "txtCommision";
-            this.txtCommision.Size = new System.Drawing.Size(67, 26);
-            this.txtCommision.TabIndex = 59;
             // 
             // frmACTransaction
             // 

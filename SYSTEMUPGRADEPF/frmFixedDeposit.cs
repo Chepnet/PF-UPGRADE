@@ -723,6 +723,7 @@ namespace SYSTEMUPGRADEPF
 
         private void frmFixedDeposit_Load(object sender, EventArgs e)
         {
+            dtPTransDate.Value = MDIUpgrade.Workingdate;
             cmbCurrency.Items.Clear();
             int counter = 0, defindex = 0;
             ArrayList myList = oCurrency.GetCurrencies();

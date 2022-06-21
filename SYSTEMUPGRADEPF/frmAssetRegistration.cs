@@ -56,6 +56,8 @@ namespace SYSTEMUPGRADEPF
             dtpDepEndDate.Value = DateTime.Now;
             dtpDepStart.Value = DateTime.Now;
             chkIsActive.Checked = true;
+            txtBank.Text = "";
+            txtGL.Text = "";
         }
 
         private void saveToolStripButton_Click(object sender, EventArgs e)
@@ -228,6 +230,17 @@ namespace SYSTEMUPGRADEPF
                 dtpDepStart.Value = onewAssetRegister.DepStartDate;
                 dtpDepEndDate.Value = onewAssetRegister.DepEndDate;
                 txtName.Text = onewAssetRegister.Name;
+                onewBank = oBank.GetBank(onewAssetRegister.GLAccountId);
+                if(onewBank !=null)
+                {
+                    txtBank.Text = onewBank.BankName;
+                    onewChartofAccount = oChartofAccount.GetChartOfAccount(onewBank.GLId);
+                    if(onewChartofAccount !=null)
+                    {
+                        txtGL.Text = onewChartofAccount.AccountName;
+                    }
+                }
+                
 
             }
         }
@@ -269,7 +282,31 @@ namespace SYSTEMUPGRADEPF
             frm.ShowDialog();
             onewAssetSubCategory = oAssetSubCategory.GetAssetSubCategory(frm.selInt);
             if (onewAssetSubCategory != null)
-                txtSubcategory.Text = onewAssetSubCategory.SubCategoryName;
+            {
+               
+                if(onewAssetCategory.CategoryId ==onewAssetSubCategory.CategoryId )
+                {
+                    txtSubcategory.Text = onewAssetSubCategory.SubCategoryName;
+                }
+                else
+                {
+                    MessageBox.Show("Selected sub category does not belongs to the selected Category", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            }
+               
+        }
+
+        private void txtYears_TextChanged(object sender, EventArgs e)
+        {
+            int yearstodepreciate = 0;
+            int.TryParse(txtYears.Text, out yearstodepreciate);
+           dtpDepEndDate.Value  = dtpDepStart.Value.AddYears(yearstodepreciate);
+        }
+
+        private void frmAssetRegistration_Load(object sender, EventArgs e)
+        {
+            dtpDepStart.Value = MDIUpgrade.Workingdate;
         }
     }
 }

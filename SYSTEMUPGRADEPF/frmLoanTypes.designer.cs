@@ -102,7 +102,11 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.CmbDailyspecification = new System.Windows.Forms.ComboBox();
             this.cmbpostingfrequency = new System.Windows.Forms.ComboBox();
+            this.txtMonthlyIntRate = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.cmbCalculationFormula = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -119,12 +123,8 @@
             this.lblProduct = new System.Windows.Forms.Label();
             this.txtProduct = new System.Windows.Forms.TextBox();
             this.btnSearchRepaymentFrequency = new System.Windows.Forms.Button();
-            this.CmbDailyspecification = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtMonthlyIntRate = new System.Windows.Forms.TextBox();
             this.txtRepaymentFrequency = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtRefCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -167,6 +167,8 @@
             this.txtPenaltyGL = new System.Windows.Forms.TextBox();
             this.txtWriteOffGL = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
+            this.cmbAccrualFrequency = new System.Windows.Forms.ComboBox();
+            this.label37 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -205,7 +207,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1298, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(1363, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -289,7 +291,7 @@
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1287, 708);
+            this.tabControl1.Size = new System.Drawing.Size(1352, 708);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -314,7 +316,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage1.Size = new System.Drawing.Size(1279, 675);
+            this.tabPage1.Size = new System.Drawing.Size(1344, 675);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Loan Details";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -325,7 +327,7 @@
             this.chkIsActive.AutoSize = true;
             this.chkIsActive.Checked = true;
             this.chkIsActive.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkIsActive.Location = new System.Drawing.Point(1066, 497);
+            this.chkIsActive.Location = new System.Drawing.Point(1129, 557);
             this.chkIsActive.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkIsActive.Name = "chkIsActive";
             this.chkIsActive.Size = new System.Drawing.Size(95, 24);
@@ -336,11 +338,11 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.txtremarks);
-            this.groupBox5.Location = new System.Drawing.Point(672, 533);
+            this.groupBox5.Location = new System.Drawing.Point(738, 587);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox5.Size = new System.Drawing.Size(362, 100);
+            this.groupBox5.Size = new System.Drawing.Size(362, 75);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Remarks:";
@@ -351,13 +353,13 @@
             this.txtremarks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtremarks.Multiline = true;
             this.txtremarks.Name = "txtremarks";
-            this.txtremarks.Size = new System.Drawing.Size(343, 71);
+            this.txtremarks.Size = new System.Drawing.Size(343, 43);
             this.txtremarks.TabIndex = 46;
             // 
             // chkMemberCanGuarenteeOwnLoan
             // 
             this.chkMemberCanGuarenteeOwnLoan.AutoSize = true;
-            this.chkMemberCanGuarenteeOwnLoan.Location = new System.Drawing.Point(671, 427);
+            this.chkMemberCanGuarenteeOwnLoan.Location = new System.Drawing.Point(734, 487);
             this.chkMemberCanGuarenteeOwnLoan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkMemberCanGuarenteeOwnLoan.Name = "chkMemberCanGuarenteeOwnLoan";
             this.chkMemberCanGuarenteeOwnLoan.Size = new System.Drawing.Size(280, 24);
@@ -368,7 +370,7 @@
             // chkConsiderInduplumRule
             // 
             this.chkConsiderInduplumRule.AutoSize = true;
-            this.chkConsiderInduplumRule.Location = new System.Drawing.Point(671, 392);
+            this.chkConsiderInduplumRule.Location = new System.Drawing.Point(734, 452);
             this.chkConsiderInduplumRule.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkConsiderInduplumRule.Name = "chkConsiderInduplumRule";
             this.chkConsiderInduplumRule.Size = new System.Drawing.Size(217, 24);
@@ -379,7 +381,7 @@
             // chkAllowZeroOrLess
             // 
             this.chkAllowZeroOrLess.AutoSize = true;
-            this.chkAllowZeroOrLess.Location = new System.Drawing.Point(1061, 438);
+            this.chkAllowZeroOrLess.Location = new System.Drawing.Point(1124, 498);
             this.chkAllowZeroOrLess.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkAllowZeroOrLess.Name = "chkAllowZeroOrLess";
             this.chkAllowZeroOrLess.Size = new System.Drawing.Size(181, 44);
@@ -390,7 +392,7 @@
             // chkAdjustableinterestRate
             // 
             this.chkAdjustableinterestRate.AutoSize = true;
-            this.chkAdjustableinterestRate.Location = new System.Drawing.Point(1061, 399);
+            this.chkAdjustableinterestRate.Location = new System.Drawing.Point(1124, 459);
             this.chkAdjustableinterestRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkAdjustableinterestRate.Name = "chkAdjustableinterestRate";
             this.chkAdjustableinterestRate.Size = new System.Drawing.Size(208, 24);
@@ -401,7 +403,7 @@
             // chkMustBeFullySecured
             // 
             this.chkMustBeFullySecured.AutoSize = true;
-            this.chkMustBeFullySecured.Location = new System.Drawing.Point(671, 462);
+            this.chkMustBeFullySecured.Location = new System.Drawing.Point(734, 522);
             this.chkMustBeFullySecured.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkMustBeFullySecured.Name = "chkMustBeFullySecured";
             this.chkMustBeFullySecured.Size = new System.Drawing.Size(194, 24);
@@ -412,7 +414,7 @@
             // chkChargefutureinterest
             // 
             this.chkChargefutureinterest.AutoSize = true;
-            this.chkChargefutureinterest.Location = new System.Drawing.Point(1061, 321);
+            this.chkChargefutureinterest.Location = new System.Drawing.Point(1124, 381);
             this.chkChargefutureinterest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkChargefutureinterest.Name = "chkChargefutureinterest";
             this.chkChargefutureinterest.Size = new System.Drawing.Size(197, 24);
@@ -423,7 +425,7 @@
             // chkdefaulteffectdate
             // 
             this.chkdefaulteffectdate.AutoSize = true;
-            this.chkdefaulteffectdate.Location = new System.Drawing.Point(671, 497);
+            this.chkdefaulteffectdate.Location = new System.Drawing.Point(734, 557);
             this.chkdefaulteffectdate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkdefaulteffectdate.Name = "chkdefaulteffectdate";
             this.chkdefaulteffectdate.Size = new System.Drawing.Size(387, 24);
@@ -434,7 +436,7 @@
             // chkAllowZeroRating
             // 
             this.chkAllowZeroRating.AutoSize = true;
-            this.chkAllowZeroRating.Location = new System.Drawing.Point(1061, 360);
+            this.chkAllowZeroRating.Location = new System.Drawing.Point(1124, 420);
             this.chkAllowZeroRating.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkAllowZeroRating.Name = "chkAllowZeroRating";
             this.chkAllowZeroRating.Size = new System.Drawing.Size(160, 24);
@@ -445,7 +447,7 @@
             // chkcontinueChargingInterest
             // 
             this.chkcontinueChargingInterest.AutoSize = true;
-            this.chkcontinueChargingInterest.Location = new System.Drawing.Point(671, 357);
+            this.chkcontinueChargingInterest.Location = new System.Drawing.Point(734, 417);
             this.chkcontinueChargingInterest.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkcontinueChargingInterest.Name = "chkcontinueChargingInterest";
             this.chkcontinueChargingInterest.Size = new System.Drawing.Size(359, 24);
@@ -456,7 +458,7 @@
             // chkTieToCrediter
             // 
             this.chkTieToCrediter.AutoSize = true;
-            this.chkTieToCrediter.Location = new System.Drawing.Point(671, 322);
+            this.chkTieToCrediter.Location = new System.Drawing.Point(734, 382);
             this.chkTieToCrediter.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.chkTieToCrediter.Name = "chkTieToCrediter";
             this.chkTieToCrediter.Size = new System.Drawing.Size(211, 24);
@@ -489,11 +491,11 @@
             this.groupBox4.Controls.Add(this.label16);
             this.groupBox4.Controls.Add(this.txtincomefactor);
             this.groupBox4.Controls.Add(this.label15);
-            this.groupBox4.Location = new System.Drawing.Point(8, 258);
+            this.groupBox4.Location = new System.Drawing.Point(9, 277);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox4.Size = new System.Drawing.Size(638, 403);
+            this.groupBox4.Size = new System.Drawing.Size(643, 384);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Other Variables";
@@ -505,7 +507,7 @@
             this.groupBox8.Controls.Add(this.label36);
             this.groupBox8.Controls.Add(this.txtroundinginterest);
             this.groupBox8.Controls.Add(this.label32);
-            this.groupBox8.Location = new System.Drawing.Point(309, 228);
+            this.groupBox8.Location = new System.Drawing.Point(309, 234);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -564,7 +566,7 @@
             this.groupBox7.Controls.Add(this.label35);
             this.groupBox7.Controls.Add(this.label31);
             this.groupBox7.Controls.Add(this.cmbRoundPrinciapal);
-            this.groupBox7.Location = new System.Drawing.Point(309, 116);
+            this.groupBox7.Location = new System.Drawing.Point(309, 120);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -671,7 +673,7 @@
             // 
             // txtmaxAmount
             // 
-            this.txtmaxAmount.Location = new System.Drawing.Point(132, 336);
+            this.txtmaxAmount.Location = new System.Drawing.Point(132, 345);
             this.txtmaxAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtmaxAmount.Name = "txtmaxAmount";
             this.txtmaxAmount.Size = new System.Drawing.Size(148, 26);
@@ -680,7 +682,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(10, 122);
+            this.label22.Location = new System.Drawing.Point(10, 131);
             this.label22.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(99, 20);
@@ -689,7 +691,7 @@
             // 
             // txtminAmount
             // 
-            this.txtminAmount.Location = new System.Drawing.Point(132, 300);
+            this.txtminAmount.Location = new System.Drawing.Point(132, 309);
             this.txtminAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtminAmount.Name = "txtminAmount";
             this.txtminAmount.Size = new System.Drawing.Size(148, 26);
@@ -698,7 +700,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(10, 339);
+            this.label21.Location = new System.Drawing.Point(10, 348);
             this.label21.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(106, 20);
@@ -707,7 +709,7 @@
             // 
             // txtminshare
             // 
-            this.txtminshare.Location = new System.Drawing.Point(132, 260);
+            this.txtminshare.Location = new System.Drawing.Point(132, 269);
             this.txtminshare.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtminshare.Name = "txtminshare";
             this.txtminshare.Size = new System.Drawing.Size(148, 26);
@@ -716,7 +718,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(10, 303);
+            this.label20.Location = new System.Drawing.Point(10, 312);
             this.label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(98, 20);
@@ -725,7 +727,7 @@
             // 
             // txtmaxguarators
             // 
-            this.txtmaxguarators.Location = new System.Drawing.Point(132, 213);
+            this.txtmaxguarators.Location = new System.Drawing.Point(132, 222);
             this.txtmaxguarators.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtmaxguarators.Name = "txtmaxguarators";
             this.txtmaxguarators.Size = new System.Drawing.Size(148, 26);
@@ -734,7 +736,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(10, 263);
+            this.label19.Location = new System.Drawing.Point(10, 272);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(97, 20);
@@ -743,7 +745,7 @@
             // 
             // txtminguarator
             // 
-            this.txtminguarator.Location = new System.Drawing.Point(132, 166);
+            this.txtminguarator.Location = new System.Drawing.Point(132, 175);
             this.txtminguarator.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtminguarator.Name = "txtminguarator";
             this.txtminguarator.Size = new System.Drawing.Size(148, 26);
@@ -752,7 +754,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(10, 216);
+            this.label18.Location = new System.Drawing.Point(10, 225);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(122, 20);
@@ -761,7 +763,7 @@
             // 
             // txtloanfactor
             // 
-            this.txtloanfactor.Location = new System.Drawing.Point(132, 122);
+            this.txtloanfactor.Location = new System.Drawing.Point(132, 131);
             this.txtloanfactor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtloanfactor.Name = "txtloanfactor";
             this.txtloanfactor.Size = new System.Drawing.Size(148, 26);
@@ -770,7 +772,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 169);
+            this.label17.Location = new System.Drawing.Point(10, 178);
             this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(118, 20);
@@ -779,7 +781,7 @@
             // 
             // txtsharefactor
             // 
-            this.txtsharefactor.Location = new System.Drawing.Point(132, 72);
+            this.txtsharefactor.Location = new System.Drawing.Point(132, 81);
             this.txtsharefactor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtsharefactor.Name = "txtsharefactor";
             this.txtsharefactor.Size = new System.Drawing.Size(148, 26);
@@ -788,7 +790,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(10, 75);
+            this.label16.Location = new System.Drawing.Point(10, 84);
             this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(106, 20);
@@ -797,7 +799,7 @@
             // 
             // txtincomefactor
             // 
-            this.txtincomefactor.Location = new System.Drawing.Point(132, 25);
+            this.txtincomefactor.Location = new System.Drawing.Point(132, 34);
             this.txtincomefactor.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtincomefactor.Name = "txtincomefactor";
             this.txtincomefactor.Size = new System.Drawing.Size(148, 26);
@@ -806,7 +808,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(10, 28);
+            this.label15.Location = new System.Drawing.Point(10, 37);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(116, 20);
@@ -815,6 +817,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cmbAccrualFrequency);
+            this.groupBox3.Controls.Add(this.label37);
             this.groupBox3.Controls.Add(this.chkApplyOnMaturity);
             this.groupBox3.Controls.Add(this.txtMinpenaltyAmount);
             this.groupBox3.Controls.Add(this.label6);
@@ -829,11 +833,11 @@
             this.groupBox3.Controls.Add(this.cmbcalcuationoption);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(660, 119);
+            this.groupBox3.Location = new System.Drawing.Point(751, 119);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(593, 187);
+            this.groupBox3.Size = new System.Drawing.Size(593, 252);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Penalties:";
@@ -1000,7 +1004,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.CmbDailyspecification);
             this.groupBox2.Controls.Add(this.cmbpostingfrequency);
+            this.groupBox2.Controls.Add(this.txtMonthlyIntRate);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.cmbCalculationFormula);
             this.groupBox2.Controls.Add(this.label9);
@@ -1012,10 +1020,26 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(643, 129);
+            this.groupBox2.Size = new System.Drawing.Size(743, 148);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Interest:";
+            // 
+            // CmbDailyspecification
+            // 
+            this.CmbDailyspecification.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbDailyspecification.FormattingEnabled = true;
+            this.CmbDailyspecification.Items.AddRange(new object[] {
+            "No Of Days in a Month.",
+            "Use 30 Days.",
+            "Annual Rate /360.",
+            "Annual Rate /365.",
+            "Annual Rate /366."});
+            this.CmbDailyspecification.Location = new System.Drawing.Point(201, 110);
+            this.CmbDailyspecification.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CmbDailyspecification.Name = "CmbDailyspecification";
+            this.CmbDailyspecification.Size = new System.Drawing.Size(169, 28);
+            this.CmbDailyspecification.TabIndex = 46;
             // 
             // cmbpostingfrequency
             // 
@@ -1025,21 +1049,49 @@
             "Calculating on Anniversary",
             "Calculate Daily",
             "End Of Month"});
-            this.cmbpostingfrequency.Location = new System.Drawing.Point(147, 81);
+            this.cmbpostingfrequency.Location = new System.Drawing.Point(184, 72);
             this.cmbpostingfrequency.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbpostingfrequency.Name = "cmbpostingfrequency";
-            this.cmbpostingfrequency.Size = new System.Drawing.Size(156, 28);
+            this.cmbpostingfrequency.Size = new System.Drawing.Size(186, 28);
             this.cmbpostingfrequency.TabIndex = 11;
+            // 
+            // txtMonthlyIntRate
+            // 
+            this.txtMonthlyIntRate.Location = new System.Drawing.Point(564, 115);
+            this.txtMonthlyIntRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtMonthlyIntRate.Name = "txtMonthlyIntRate";
+            this.txtMonthlyIntRate.Size = new System.Drawing.Size(90, 26);
+            this.txtMonthlyIntRate.TabIndex = 47;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(7, 113);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(181, 20);
+            this.label7.TabIndex = 49;
+            this.label7.Text = "Daily Rate Specification:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(394, 118);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(158, 20);
+            this.label4.TabIndex = 48;
+            this.label4.Text = "Monthly Int. Rate(%):";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 81);
+            this.label10.Location = new System.Drawing.Point(7, 69);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(145, 20);
+            this.label10.Size = new System.Drawing.Size(149, 20);
             this.label10.TabIndex = 8;
-            this.label10.Text = "Posting Frequency:";
+            this.label10.Text = "Accrual  Frequency:";
             // 
             // cmbCalculationFormula
             // 
@@ -1049,7 +1101,7 @@
             "(PRT/100)",
             "P(T+1)R)/200",
             "P(T+R+2)/200"});
-            this.cmbCalculationFormula.Location = new System.Drawing.Point(472, 26);
+            this.cmbCalculationFormula.Location = new System.Drawing.Point(560, 26);
             this.cmbCalculationFormula.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbCalculationFormula.Name = "cmbCalculationFormula";
             this.cmbCalculationFormula.Size = new System.Drawing.Size(166, 28);
@@ -1059,7 +1111,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(340, 84);
+            this.label9.Location = new System.Drawing.Point(394, 80);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(124, 20);
@@ -1069,7 +1121,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(311, 31);
+            this.label11.Location = new System.Drawing.Point(394, 31);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(153, 20);
@@ -1084,7 +1136,7 @@
             "Cash Basis",
             "Interest Accrual",
             "Accrual to Books"});
-            this.cmbpostingmethod.Location = new System.Drawing.Point(476, 77);
+            this.cmbpostingmethod.Location = new System.Drawing.Point(564, 77);
             this.cmbpostingmethod.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbpostingmethod.Name = "cmbpostingmethod";
             this.cmbpostingmethod.Size = new System.Drawing.Size(162, 28);
@@ -1100,7 +1152,7 @@
             "Reducing Balance",
             "Reducing Balance Constant",
             "Amortised"});
-            this.cmbPayMethod.Location = new System.Drawing.Point(117, 27);
+            this.cmbPayMethod.Location = new System.Drawing.Point(184, 26);
             this.cmbPayMethod.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cmbPayMethod.Name = "cmbPayMethod";
             this.cmbPayMethod.Size = new System.Drawing.Size(186, 28);
@@ -1127,12 +1179,8 @@
             this.groupBox1.Controls.Add(this.lblProduct);
             this.groupBox1.Controls.Add(this.txtProduct);
             this.groupBox1.Controls.Add(this.btnSearchRepaymentFrequency);
-            this.groupBox1.Controls.Add(this.CmbDailyspecification);
-            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.txtMonthlyIntRate);
             this.groupBox1.Controls.Add(this.txtRepaymentFrequency);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtRefCode);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
@@ -1145,7 +1193,7 @@
             // 
             // txtmaxPeriod
             // 
-            this.txtmaxPeriod.Location = new System.Drawing.Point(914, 64);
+            this.txtmaxPeriod.Location = new System.Drawing.Point(724, 63);
             this.txtmaxPeriod.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtmaxPeriod.Name = "txtmaxPeriod";
             this.txtmaxPeriod.Size = new System.Drawing.Size(148, 26);
@@ -1154,7 +1202,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(809, 69);
+            this.label2.Location = new System.Drawing.Point(619, 68);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 20);
@@ -1163,7 +1211,7 @@
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(98, 65);
+            this.txtDescription.Location = new System.Drawing.Point(718, 22);
             this.txtDescription.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(239, 26);
@@ -1172,7 +1220,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(4, 70);
+            this.label3.Location = new System.Drawing.Point(624, 27);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(93, 20);
@@ -1217,7 +1265,7 @@
             this.btnSearchRepaymentFrequency.FlatAppearance.BorderSize = 0;
             this.btnSearchRepaymentFrequency.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchRepaymentFrequency.Image = ((System.Drawing.Image)(resources.GetObject("btnSearchRepaymentFrequency.Image")));
-            this.btnSearchRepaymentFrequency.Location = new System.Drawing.Point(748, 65);
+            this.btnSearchRepaymentFrequency.Location = new System.Drawing.Point(427, 62);
             this.btnSearchRepaymentFrequency.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearchRepaymentFrequency.Name = "btnSearchRepaymentFrequency";
             this.btnSearchRepaymentFrequency.Size = new System.Drawing.Size(30, 31);
@@ -1226,36 +1274,10 @@
             this.btnSearchRepaymentFrequency.UseVisualStyleBackColor = true;
             this.btnSearchRepaymentFrequency.Click += new System.EventHandler(this.button2_Click_1);
             // 
-            // CmbDailyspecification
-            // 
-            this.CmbDailyspecification.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CmbDailyspecification.FormattingEnabled = true;
-            this.CmbDailyspecification.Items.AddRange(new object[] {
-            "No Of Days in a Month.",
-            "Use 30 Days.",
-            "Annual Rate /360.",
-            "Annual Rate /365.",
-            "Annual Rate /366."});
-            this.CmbDailyspecification.Location = new System.Drawing.Point(818, 18);
-            this.CmbDailyspecification.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.CmbDailyspecification.Name = "CmbDailyspecification";
-            this.CmbDailyspecification.Size = new System.Drawing.Size(152, 28);
-            this.CmbDailyspecification.TabIndex = 3;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(624, 23);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(181, 20);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Daily Rate Specification:";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(358, 71);
+            this.label5.Location = new System.Drawing.Point(31, 68);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(174, 20);
@@ -1263,32 +1285,13 @@
             this.label5.Text = "Repayment Frequency:";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // txtMonthlyIntRate
-            // 
-            this.txtMonthlyIntRate.Location = new System.Drawing.Point(1142, 20);
-            this.txtMonthlyIntRate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtMonthlyIntRate.Name = "txtMonthlyIntRate";
-            this.txtMonthlyIntRate.Size = new System.Drawing.Size(90, 26);
-            this.txtMonthlyIntRate.TabIndex = 4;
-            this.txtMonthlyIntRate.TextChanged += new System.EventHandler(this.textBox5_TextChanged);
-            // 
             // txtRepaymentFrequency
             // 
-            this.txtRepaymentFrequency.Location = new System.Drawing.Point(538, 66);
+            this.txtRepaymentFrequency.Location = new System.Drawing.Point(211, 63);
             this.txtRepaymentFrequency.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtRepaymentFrequency.Name = "txtRepaymentFrequency";
             this.txtRepaymentFrequency.Size = new System.Drawing.Size(199, 26);
             this.txtRepaymentFrequency.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(975, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(158, 20);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Monthly Int. Rate(%):";
             // 
             // txtRefCode
             // 
@@ -1316,7 +1319,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage2.Size = new System.Drawing.Size(1279, 675);
+            this.tabPage2.Size = new System.Drawing.Size(1344, 675);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Other Charges/Colleterals";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1526,7 +1529,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage3.Size = new System.Drawing.Size(1279, 675);
+            this.tabPage3.Size = new System.Drawing.Size(1344, 675);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "General Ledger Settings";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1752,16 +1755,39 @@
             this.label26.TabIndex = 32;
             this.label26.Text = "Writeoff(GL Code):";
             // 
+            // cmbAccrualFrequency
+            // 
+            this.cmbAccrualFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbAccrualFrequency.FormattingEnabled = true;
+            this.cmbAccrualFrequency.Items.AddRange(new object[] {
+            "Calculating on Anniversary",
+            "Calculate Daily",
+            "End Of Month"});
+            this.cmbAccrualFrequency.Location = new System.Drawing.Point(152, 195);
+            this.cmbAccrualFrequency.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.cmbAccrualFrequency.Name = "cmbAccrualFrequency";
+            this.cmbAccrualFrequency.Size = new System.Drawing.Size(119, 28);
+            this.cmbAccrualFrequency.TabIndex = 51;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(7, 202);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(149, 20);
+            this.label37.TabIndex = 50;
+            this.label37.Text = "Accrual  Frequency:";
+            // 
             // frmLoanTypes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1298, 747);
+            this.ClientSize = new System.Drawing.Size(1363, 747);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximizeBox = false;
             this.Name = "frmLoanTypes";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -1819,10 +1845,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtpenaltyValue;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtMonthlyIntRate;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtRepaymentFrequency;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtRefCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabPage tabPage3;
@@ -1833,8 +1857,6 @@
         private System.Windows.Forms.ComboBox cmbpostingmethod;
         private System.Windows.Forms.ComboBox cmbPayMethod;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox CmbDailyspecification;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ComboBox cmbfrequencycalculation;
         private System.Windows.Forms.Label label14;
@@ -1943,5 +1965,11 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtmaxPeriod;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox CmbDailyspecification;
+        private System.Windows.Forms.TextBox txtMonthlyIntRate;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox cmbAccrualFrequency;
+        private System.Windows.Forms.Label label37;
     }
 }

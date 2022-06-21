@@ -20,7 +20,12 @@ namespace SYSTEMUPGRADEPF
         Classes.AssetSubCategory oAssetSubCategory = new Classes.AssetSubCategory();
         Classes.AssetSubCategory onewAssetSubcategory = null;
         public int selInt = 0;
-
+        private bool _pickingvalues = false;
+        public bool PickingValues
+        {
+            get { return _pickingvalues; }
+            set { _pickingvalues = value; }
+        }
         private void btnAddNew_Click(object sender, EventArgs e)
         {
             frmAssetSubCategory frm = new SYSTEMUPGRADEPF.frmAssetSubCategory();
@@ -31,6 +36,7 @@ namespace SYSTEMUPGRADEPF
         private void frmSearchAssetSubCategory_Load(object sender, EventArgs e)
         {
             loadAssetSubCategories();
+            panel1.Visible = this.PickingValues;
         }
 
         private void loadAssetSubCategories()

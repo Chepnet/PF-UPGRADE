@@ -77,15 +77,11 @@
             this.txtwithdrawalid = new System.Windows.Forms.TextBox();
             this.txtcompanyid = new System.Windows.Forms.TextBox();
             this.txtdepartmentid = new System.Windows.Forms.TextBox();
-            this.txtnetsalary = new System.Windows.Forms.TextBox();
             this.txtcertificateno = new System.Windows.Forms.TextBox();
-            this.txtgrosssalary = new System.Windows.Forms.TextBox();
             this.txtprocessid = new System.Windows.Forms.TextBox();
             this.lblWithdrawal = new System.Windows.Forms.Label();
             this.lblDepartment = new System.Windows.Forms.Label();
-            this.lblNetSalary = new System.Windows.Forms.Label();
             this.lblCertificate = new System.Windows.Forms.Label();
-            this.lblGrossSalary = new System.Windows.Forms.Label();
             this.lblProcess = new System.Windows.Forms.Label();
             this.lblCompany = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -94,14 +90,18 @@
             this.btnBank = new System.Windows.Forms.Button();
             this.txtbankid = new System.Windows.Forms.TextBox();
             this.txtbankbranchid = new System.Windows.Forms.TextBox();
+            this.txtnetsalary = new System.Windows.Forms.TextBox();
             this.txtbranchid = new System.Windows.Forms.TextBox();
             this.txtaccountno = new System.Windows.Forms.TextBox();
+            this.txtgrosssalary = new System.Windows.Forms.TextBox();
             this.txtkrapin = new System.Windows.Forms.TextBox();
             this.lblAccountNo = new System.Windows.Forms.Label();
             this.lblBranch = new System.Windows.Forms.Label();
             this.lblBankBranch = new System.Windows.Forms.Label();
+            this.lblNetSalary = new System.Windows.Forms.Label();
             this.lblBank = new System.Windows.Forms.Label();
             this.lblKraPin = new System.Windows.Forms.Label();
+            this.lblGrossSalary = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
@@ -668,14 +668,6 @@
             this.txtdepartmentid.Size = new System.Drawing.Size(427, 26);
             this.txtdepartmentid.TabIndex = 37;
             // 
-            // txtnetsalary
-            // 
-            this.txtnetsalary.Location = new System.Drawing.Point(121, 314);
-            this.txtnetsalary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtnetsalary.Name = "txtnetsalary";
-            this.txtnetsalary.Size = new System.Drawing.Size(427, 26);
-            this.txtnetsalary.TabIndex = 31;
-            // 
             // txtcertificateno
             // 
             this.txtcertificateno.Location = new System.Drawing.Point(132, 85);
@@ -683,14 +675,6 @@
             this.txtcertificateno.Name = "txtcertificateno";
             this.txtcertificateno.Size = new System.Drawing.Size(427, 26);
             this.txtcertificateno.TabIndex = 34;
-            // 
-            // txtgrosssalary
-            // 
-            this.txtgrosssalary.Location = new System.Drawing.Point(121, 270);
-            this.txtgrosssalary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txtgrosssalary.Name = "txtgrosssalary";
-            this.txtgrosssalary.Size = new System.Drawing.Size(427, 26);
-            this.txtgrosssalary.TabIndex = 30;
             // 
             // txtprocessid
             // 
@@ -720,16 +704,6 @@
             this.lblDepartment.TabIndex = 4;
             this.lblDepartment.Text = "Department:";
             // 
-            // lblNetSalary
-            // 
-            this.lblNetSalary.AutoSize = true;
-            this.lblNetSalary.Location = new System.Drawing.Point(5, 314);
-            this.lblNetSalary.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNetSalary.Name = "lblNetSalary";
-            this.lblNetSalary.Size = new System.Drawing.Size(86, 20);
-            this.lblNetSalary.TabIndex = 6;
-            this.lblNetSalary.Text = "Net Salary:";
-            // 
             // lblCertificate
             // 
             this.lblCertificate.AutoSize = true;
@@ -739,16 +713,6 @@
             this.lblCertificate.Size = new System.Drawing.Size(109, 20);
             this.lblCertificate.TabIndex = 4;
             this.lblCertificate.Text = "Certificate No:";
-            // 
-            // lblGrossSalary
-            // 
-            this.lblGrossSalary.AutoSize = true;
-            this.lblGrossSalary.Location = new System.Drawing.Point(9, 271);
-            this.lblGrossSalary.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblGrossSalary.Name = "lblGrossSalary";
-            this.lblGrossSalary.Size = new System.Drawing.Size(104, 20);
-            this.lblGrossSalary.TabIndex = 5;
-            this.lblGrossSalary.Text = "Gross Salary:";
             // 
             // lblProcess
             // 
@@ -856,6 +820,14 @@
             this.txtbankbranchid.Size = new System.Drawing.Size(427, 26);
             this.txtbankbranchid.TabIndex = 25;
             // 
+            // txtnetsalary
+            // 
+            this.txtnetsalary.Location = new System.Drawing.Point(121, 314);
+            this.txtnetsalary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtnetsalary.Name = "txtnetsalary";
+            this.txtnetsalary.Size = new System.Drawing.Size(427, 26);
+            this.txtnetsalary.TabIndex = 31;
+            // 
             // txtbranchid
             // 
             this.txtbranchid.Location = new System.Drawing.Point(120, 225);
@@ -871,6 +843,14 @@
             this.txtaccountno.Name = "txtaccountno";
             this.txtaccountno.Size = new System.Drawing.Size(427, 26);
             this.txtaccountno.TabIndex = 27;
+            // 
+            // txtgrosssalary
+            // 
+            this.txtgrosssalary.Location = new System.Drawing.Point(121, 270);
+            this.txtgrosssalary.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtgrosssalary.Name = "txtgrosssalary";
+            this.txtgrosssalary.Size = new System.Drawing.Size(427, 26);
+            this.txtgrosssalary.TabIndex = 30;
             // 
             // txtkrapin
             // 
@@ -910,6 +890,16 @@
             this.lblBankBranch.TabIndex = 2;
             this.lblBankBranch.Text = "Bank Branch:";
             // 
+            // lblNetSalary
+            // 
+            this.lblNetSalary.AutoSize = true;
+            this.lblNetSalary.Location = new System.Drawing.Point(5, 314);
+            this.lblNetSalary.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNetSalary.Name = "lblNetSalary";
+            this.lblNetSalary.Size = new System.Drawing.Size(86, 20);
+            this.lblNetSalary.TabIndex = 6;
+            this.lblNetSalary.Text = "Net Salary:";
+            // 
             // lblBank
             // 
             this.lblBank.AutoSize = true;
@@ -930,13 +920,23 @@
             this.lblKraPin.TabIndex = 0;
             this.lblKraPin.Text = "Kra Pin:";
             // 
+            // lblGrossSalary
+            // 
+            this.lblGrossSalary.AutoSize = true;
+            this.lblGrossSalary.Location = new System.Drawing.Point(9, 271);
+            this.lblGrossSalary.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblGrossSalary.Name = "lblGrossSalary";
+            this.lblGrossSalary.Size = new System.Drawing.Size(104, 20);
+            this.lblGrossSalary.TabIndex = 5;
+            this.lblGrossSalary.Text = "Gross Salary:";
+            // 
             // tabPage3
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage3.Size = new System.Drawing.Size(1334, 369);
+            this.tabPage3.Size = new System.Drawing.Size(1275, 369);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Next Of Kin";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -948,7 +948,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage4.Size = new System.Drawing.Size(1334, 369);
+            this.tabPage4.Size = new System.Drawing.Size(1275, 369);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Loan Details";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -959,7 +959,7 @@
             this.tabPage5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage5.Size = new System.Drawing.Size(1334, 369);
+            this.tabPage5.Size = new System.Drawing.Size(1275, 369);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Saving/Deposits";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -970,7 +970,7 @@
             this.tabPage6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage6.Size = new System.Drawing.Size(1334, 369);
+            this.tabPage6.Size = new System.Drawing.Size(1275, 369);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "Gurateed Loan";
             this.tabPage6.UseVisualStyleBackColor = true;
@@ -981,7 +981,7 @@
             this.tabPage7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage7.Size = new System.Drawing.Size(1334, 369);
+            this.tabPage7.Size = new System.Drawing.Size(1275, 369);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Business details";
             this.tabPage7.UseVisualStyleBackColor = true;

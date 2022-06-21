@@ -49,6 +49,8 @@
             this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn13 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn14 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn15 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.cmbCurrency = new System.Windows.Forms.ComboBox();
@@ -80,8 +82,7 @@
             this.olvColumn9 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn10 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn11 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn12 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn16 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.pcbphoto)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -229,6 +230,8 @@
             this.objListLoans.AllColumns.Add(this.olvColumn5);
             this.objListLoans.AllColumns.Add(this.olvColumn6);
             this.objListLoans.AllColumns.Add(this.olvColumn13);
+            this.objListLoans.AllColumns.Add(this.olvColumn14);
+            this.objListLoans.AllColumns.Add(this.olvColumn15);
             this.objListLoans.CellEditUseWholeCell = false;
             this.objListLoans.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
@@ -237,7 +240,9 @@
             this.olvColumn4,
             this.olvColumn5,
             this.olvColumn6,
-            this.olvColumn13});
+            this.olvColumn13,
+            this.olvColumn14,
+            this.olvColumn15});
             this.objListLoans.Cursor = System.Windows.Forms.Cursors.Default;
             this.objListLoans.Dock = System.Windows.Forms.DockStyle.Fill;
             this.objListLoans.FullRowSelect = true;
@@ -300,6 +305,21 @@
             this.olvColumn13.Text = "Principal Balance";
             this.olvColumn13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.olvColumn13.Width = 130;
+            // 
+            // olvColumn14
+            // 
+            this.olvColumn14.AspectName = "InterestBalance";
+            this.olvColumn14.AspectToStringFormat = "{0:###,###.00}";
+            this.olvColumn14.Text = "Interest Balance";
+            this.olvColumn14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.olvColumn14.Width = 164;
+            // 
+            // olvColumn15
+            // 
+            this.olvColumn15.AspectName = "RunningBalance";
+            this.olvColumn15.AspectToStringFormat = "{0:###,###.00}";
+            this.olvColumn15.Text = "Total Balance";
+            this.olvColumn15.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tabControl1
             // 
@@ -429,6 +449,7 @@
             // dtpTransactionDate
             // 
             this.dtpTransactionDate.CustomFormat = "dd-MMM-yyyy";
+            this.dtpTransactionDate.Enabled = false;
             this.dtpTransactionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpTransactionDate.Location = new System.Drawing.Point(174, 37);
             this.dtpTransactionDate.Name = "dtpTransactionDate";
@@ -489,6 +510,7 @@
             this.label8.Size = new System.Drawing.Size(140, 20);
             this.label8.TabIndex = 38;
             this.label8.Text = "Mode Of Payment:";
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // label7
             // 
@@ -570,16 +592,14 @@
             this.objListLoanTransactions.AllColumns.Add(this.olvColumn9);
             this.objListLoanTransactions.AllColumns.Add(this.olvColumn10);
             this.objListLoanTransactions.AllColumns.Add(this.olvColumn11);
-            this.objListLoanTransactions.AllColumns.Add(this.olvColumn12);
-            this.objListLoanTransactions.AllColumns.Add(this.olvColumn8);
+            this.objListLoanTransactions.AllColumns.Add(this.olvColumn16);
             this.objListLoanTransactions.CellEditUseWholeCell = false;
             this.objListLoanTransactions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn7,
             this.olvColumn9,
             this.olvColumn10,
             this.olvColumn11,
-            this.olvColumn12,
-            this.olvColumn8});
+            this.olvColumn16});
             this.objListLoanTransactions.Cursor = System.Windows.Forms.Cursors.Default;
             this.objListLoanTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
             this.objListLoanTransactions.FullRowSelect = true;
@@ -606,7 +626,7 @@
             // 
             this.olvColumn9.AspectName = "ProductName";
             this.olvColumn9.Text = "Product";
-            this.olvColumn9.Width = 158;
+            this.olvColumn9.Width = 113;
             // 
             // olvColumn10
             // 
@@ -622,19 +642,13 @@
             this.olvColumn11.Text = "Mode Of Payment";
             this.olvColumn11.Width = 216;
             // 
-            // olvColumn12
+            // olvColumn16
             // 
-            this.olvColumn12.AspectName = "LoanName";
-            this.olvColumn12.AspectToStringFormat = "";
-            this.olvColumn12.Text = "Loan Name";
-            this.olvColumn12.Width = 170;
-            // 
-            // olvColumn8
-            // 
-            this.olvColumn8.AspectName = "PrincipalBalance";
-            this.olvColumn8.AspectToStringFormat = "{0:###,###.00}";
-            this.olvColumn8.Text = "PrincipalBalance";
-            this.olvColumn8.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.olvColumn16.AspectName = "Interest";
+            this.olvColumn16.AspectToStringFormat = "{0:###,###.00}";
+            this.olvColumn16.Text = "Interest";
+            this.olvColumn16.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.olvColumn16.Width = 134;
             // 
             // frmLoanRepayment
             // 
@@ -715,10 +729,11 @@
         private BrightIdeasSoftware.OLVColumn olvColumn9;
         private BrightIdeasSoftware.OLVColumn olvColumn10;
         private BrightIdeasSoftware.OLVColumn olvColumn11;
-        private BrightIdeasSoftware.OLVColumn olvColumn12;
         private BrightIdeasSoftware.OLVColumn olvColumn13;
         private System.Windows.Forms.ComboBox cmbCurrency;
         private System.Windows.Forms.Label label13;
-        private BrightIdeasSoftware.OLVColumn olvColumn8;
+        private BrightIdeasSoftware.OLVColumn olvColumn14;
+        private BrightIdeasSoftware.OLVColumn olvColumn15;
+        private BrightIdeasSoftware.OLVColumn olvColumn16;
     }
 }

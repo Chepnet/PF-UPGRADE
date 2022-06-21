@@ -231,6 +231,7 @@
             this.chkIsActive.TabIndex = 5;
             this.chkIsActive.Text = "Is Active";
             this.chkIsActive.UseVisualStyleBackColor = true;
+            this.chkIsActive.CheckedChanged += new System.EventHandler(this.chkIsActive_CheckedChanged);
             // 
             // frmStation
             // 

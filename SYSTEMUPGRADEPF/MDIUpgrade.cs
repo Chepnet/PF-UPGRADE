@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +22,9 @@ namespace SYSTEMUPGRADEPF
 
         public static string MachineName { get; }
         public static string DatabaseName { get; }
+        public static DateTime Workingdate = DateTime.Now;
+        Classes.MainInfo oMainInfo = new Classes.MainInfo();
+        Classes.MainInfo onewMainInfo = null;
         private void ShowNewForm(object sender, EventArgs e)
         {
             
@@ -93,8 +97,27 @@ namespace SYSTEMUPGRADEPF
 
         private void MDIUpgrade_Load(object sender, EventArgs e)
         {
-            this.Text = this.Text +  Environment.MachineName+"  " + "The Current Date:  " +  DateTime.Now.ToString("yyyy MMM dd");
+            ArrayList myList = new ArrayList();
+            myList = oMainInfo.GetMainInfos();
+            string datestatus = "";
+            foreach (Classes.MainInfo omainfo in myList)
+            {
+                Workingdate = omainfo.PrevSODDate;
+                if(omainfo.PrevEODDate ==omainfo.PrevSODDate )
+                {
+                    datestatus = "Closed";
+                }
+                else
+                {
+                    datestatus = "Open";
+                }
+                
+
+            }
+            this.Text = this.Text +  Environment.MachineName+"  " + "The Current Date:  " + Workingdate +"("+datestatus +")" ;
             toolStripStatusLabel.Text = "Login Name: " + "   Machine Name: " + Environment.MachineName + "   Login Time: " + DateTime.Now;
+
+            foreach (Control control in this.Controls) { if (control is MdiClient) { control.BackColor = Color.DarkTurquoise  ; break; } }
         }
 
         private void memberApplicationToolStripMenuItem_Click(object sender, EventArgs e)
@@ -720,8 +743,8 @@ namespace SYSTEMUPGRADEPF
 
         private void loansReportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmloanreport frm = new SYSTEMUPGRADEPF.frmloanreport();
-            frm.ShowDialog();
+            //frmloanreport frm = new SYSTEMUPGRADEPF.frmloanreport();
+            //frm.ShowDialog();
         }
 
         private void machineNameToolStripMenuItem_Click(object sender, EventArgs e)
@@ -801,6 +824,23 @@ namespace SYSTEMUPGRADEPF
         private void assetSubCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAssetSubCategory frm = new SYSTEMUPGRADEPF.frmAssetSubCategory();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
+        private void calculatorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("calc.exe");
+        }
+
+        private void statusStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void startEndOfDayToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmStartAndEndOfDay frm = new SYSTEMUPGRADEPF.frmStartAndEndOfDay();
             frm.MdiParent = this;
             frm.Show();
         }

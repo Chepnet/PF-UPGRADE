@@ -867,6 +867,7 @@
             // dTPbBookingDate
             // 
             this.dTPbBookingDate.CustomFormat = "dd-MMM-yyyy";
+            this.dTPbBookingDate.Enabled = false;
             this.dTPbBookingDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dTPbBookingDate.Location = new System.Drawing.Point(161, 37);
             this.dTPbBookingDate.Name = "dTPbBookingDate";

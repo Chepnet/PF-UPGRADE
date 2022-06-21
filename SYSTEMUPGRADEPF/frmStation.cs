@@ -396,5 +396,10 @@ namespace SYSTEMUPGRADEPF
                 }
             }
         }
+
+        private void chkIsActive_CheckedChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
